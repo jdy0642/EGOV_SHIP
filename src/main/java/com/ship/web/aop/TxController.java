@@ -23,7 +23,10 @@ import com.ship.web.pxy.UserProxy;
 =======
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.Trunk;
+<<<<<<< HEAD
 >>>>>>> ljs
+=======
+>>>>>>> hsc1
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -33,6 +36,7 @@ public class TxController {
 	//@Autowired HashMap<String, String> map;
 	@Autowired Printer p;
 	@Autowired TxService txService; 
+<<<<<<< HEAD
 	@Autowired Trunk<Object> trunk;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -41,6 +45,9 @@ public class TxController {
 >>>>>>> sjw
 =======
 >>>>>>> ljs
+=======
+	@Autowired Trunk<Object> map;
+>>>>>>> hsc1
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch){
@@ -58,12 +65,17 @@ public class TxController {
 =======
 		int userCount =  txService.registerUsers();
 		p.accept("서비스 카운팅: "+userCount);
+<<<<<<< HEAD
 		trunk.put(Arrays.asList("userCount"), Arrays.asList(userCount));
 <<<<<<< HEAD
 >>>>>>> sjw
 =======
 >>>>>>> ljs
 		return trunk.get();
+=======
+		map.put(Arrays.asList("userCount"), Arrays.asList(userCount));
+		return map.get();
+>>>>>>> hsc1
 	}
 	
 }

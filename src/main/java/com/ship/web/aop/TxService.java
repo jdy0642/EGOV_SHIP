@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Qualifier;
 =======
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 =======
 import org.springframework.beans.factory.annotation.Qualifier;
 >>>>>>> ljs
+=======
+import org.springframework.beans.factory.annotation.Qualifier;
+>>>>>>> hsc1
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +32,7 @@ public class TxService {
 <<<<<<< HEAD
 <<<<<<< HEAD
 	@Autowired CrawlingProxy pxy;
+<<<<<<< HEAD
 =======
 	@Autowired CrawlingProxy crawler;
 >>>>>>> sjw
@@ -36,6 +41,9 @@ public class TxService {
 >>>>>>> ljs
 	@Autowired UserProxy manager;
 	
+=======
+	@Autowired UserProxy manager;
+>>>>>>> hsc1
 	@SuppressWarnings("unchecked")
 	public List<String> crawling(Map<?,?> paramMap){
 		List<String> txServiceList = new ArrayList<>();
@@ -48,11 +56,17 @@ public class TxService {
 		manager.insertUsers();
 		return userMapper.countUsers();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	}
 	public int trucateUsers() {
 		
 		return 0;
 >>>>>>> ljs
+=======
+	}
+	public void truncateUsers() {
+		
+>>>>>>> hsc1
 	}
 }

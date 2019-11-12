@@ -131,7 +131,11 @@ public enum SQL {
 			
 		case CREATE_ADMIN:
 			result = "CREATE TABLE ADMIN(\n" + 
+<<<<<<< HEAD
 					"   ADMINID VARCHAR(30) PRIMARY KEY,\n" + 
+=======
+					"	ADMINID VARCHAR(30) PRIMARY KEY,\n" + 
+>>>>>>> hsc1
 					"    ADMINPW VARCHAR(30),\n" + 
 					"    ADMINNAME VARCHAR(30),\n" + 
 					"    ADMINTEL VARCHAR(30),\n" + 

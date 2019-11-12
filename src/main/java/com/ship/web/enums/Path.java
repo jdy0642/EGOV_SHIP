@@ -4,6 +4,7 @@ public enum Path {
 	UPLOAD_PATH;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 >>>>>>> sjw
@@ -27,6 +28,17 @@ public enum Path {
 		
 >>>>>>> ljs
 		}
+=======
+	@Override
+	public String toString() {
+		String result = "";
+		switch(this) {
+			case UPLOAD_PATH:
+			result = "C:\\Users\\user\\git\\EGOV_SHIP\\src\\main\\webapp\\resources\\upload\\temp";
+			break;
+		}
+		
+>>>>>>> hsc1
 		return result;
 	}
 }

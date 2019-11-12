@@ -25,16 +25,24 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
 		// TODO Auto-generated method stub
 		registration.setInitParameter("thorwExceptionIfNoHandlerFound", "true");
+=======
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
+>>>>>>> hsc1
 		MultipartConfigElement multipartConfig = new MultipartConfigElement(
 				Path.UPLOAD_PATH.toString(),20971520,41943040,20971520);
 		registration.setMultipartConfig(multipartConfig);
 	}
+<<<<<<< HEAD
 >>>>>>> ljs
 
 	@Override
@@ -52,4 +60,6 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 >>>>>>> sjw
 		registration.setMultipartConfig(multipartConfig);
 	}
+=======
+>>>>>>> hsc1
 }

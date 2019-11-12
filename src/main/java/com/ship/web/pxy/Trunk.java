@@ -1,6 +1,7 @@
 package com.ship.web.pxy;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,6 +31,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class Trunk<T> {
 >>>>>>> ljs
+=======
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.function.Function;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
+import lombok.Data;
+@Component
+public class Trunk<T> {
+>>>>>>> hsc1
 	private HashMap<String, T> map;
 	public void put(List<String> x, List<T> y) {
 		map = new HashMap<>();
@@ -38,6 +50,7 @@ public class Trunk<T> {
 		}
 		map.forEach((k,v)-> System.out.print(String.format("%s : %s", k,v)));
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	public T get(String k) {
@@ -56,6 +69,12 @@ public class Trunk<T> {
 >>>>>>> sjw
 =======
 >>>>>>> ljs
+=======
+	public T get(String k) {
+		Function<String,T> f = p -> map.get(p);
+		return f.apply(k);
+	}
+>>>>>>> hsc1
 	public HashMap<String, T> get() {return map;}
 	public int size() {return map.size();}
 }

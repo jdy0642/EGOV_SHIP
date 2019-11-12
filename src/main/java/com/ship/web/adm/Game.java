@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 @Lazy
 public class Game {
 
-	private String gameid,stadiumname,stadiumloc,stadiumsize,stadiumtel,shower,parking,gamedate;
+	private String gameid,stadiumname,stadiumloc,stadiumsize,stadiumtel,shower,parking,gamedate,usercount,adminid;
 }

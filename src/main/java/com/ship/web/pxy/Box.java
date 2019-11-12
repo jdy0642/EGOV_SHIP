@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 @Component @Data @Lazy
 public class Box<T> {
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
 =======
@@ -18,6 +19,8 @@ public class Box<T> {
 >>>>>>> sjw
 =======
 >>>>>>> ljs
+=======
+>>>>>>> hsc1
 	private ArrayList<T> list;
 	public void add(T item) {
 		list = new ArrayList<T>();
@@ -30,10 +33,16 @@ public class Box<T> {
 	public void clear() {list.clear();}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> sjw
 =======
 
 >>>>>>> ljs
+=======
+	
+
+	////
+>>>>>>> hsc1
 }
