@@ -210,7 +210,7 @@
           <groupId>org.mariadb.jdbc</groupId>
           <artifactId>mariadb-java-client</artifactId>
           <version>${mariadb-version}</version>
-     	 </dependency>
+        </dependency>
 		
 		<!-- Test -->
 		<dependency>

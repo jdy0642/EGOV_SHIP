@@ -104,6 +104,8 @@ auth = (()=>{
 				text : "로그인",
 				click : e=>{
 					e.preventDefault();
+					$('#uid').val('a')
+					$('#upw').val('1')
 					let data ={uid : $('#uid').val(),
 							   upw : $('#upw').val()
 							}

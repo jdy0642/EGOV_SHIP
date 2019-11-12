@@ -1,25 +1,44 @@
 package com.ship.web.pxy;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+<<<<<<< HEAD
+=======
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+>>>>>>> sjw
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ship.web.aop.TxMapper;
 import com.ship.web.usr.User;
 import com.ship.web.usr.UserMapper;
 @Component("manager")
 public class UserProxy extends Proxy{
 	@Autowired UserMapper userMapper;
+<<<<<<< HEAD
 	
+=======
+	@Autowired TxMapper txMapper;
+>>>>>>> sjw
 	 private char[] charaters = {'a','b','c','d','e','f','g','h','i',
 			   'j','k','l','m','n','o','p','q','r','s','t','u','v','w',
 			   'x','y','z','0','1','2','3','4','5','6','7','8','9'};
 	   private int mailLength = 6; 
 	   
+<<<<<<< HEAD
 	   public String makeUname(){
+=======
+	   public String mName(){
+	//   uid,upw, uname,  loc, tel, point, age, gender,
+//	    email, score, mvp, win, hitmap, km, heart, author, lolName
+>>>>>>> sjw
 	       List<String> fName = Arrays.asList("김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안",
 	                 "송", "류", "전", "홍", "고", "문", "양", "손", "배", "조", "백", "허", "유", "남", "심", "노", "정", "하", "곽", "성", "차", "주",
 	                 "우", "구", "신", "임", "나", "전", "민", "유", "진", "지", "엄", "채", "원", "천", "방", "공", "강", "현", "함", "변", "염", "양",
@@ -41,11 +60,39 @@ public class UserProxy extends Proxy{
 	             return fullName;
 	           }
 	   
-	   private String makeLoc() {
-		   	List<String> loc = Arrays.asList("서울, 경기, 충청");
-		   	Collections.shuffle(loc);
-			return loc.get(0);
+	  
+	   public String mAge () {
+			return String.format("%02d", random(1, 100)); 
 		}
+		
+		public String mGender () {
+			return (random(10, 10))%2 == 0 ? "남" : "여"; 
+		}
+		
+		public String mTel () {
+			return String.format("%03d",random(1, 100))+"-"+String.format("%04d",random(1, 1000));
+			//return Integer.parseInt(String.format("%07d",random(1, 10000000)));
+		}
+		
+		public String mUpoint () {
+			return String.format("%04d",random(1, 1000));
+		}
+		
+		public String mScore () {
+			return String.format("%03d",random(1, 100));
+		}
+		
+		public String mMvp () {
+			return String.format("%02d",random(1, 100));
+		}
+		
+		public String mWin () {
+			return String.format("%02d",random(1, 100));
+		}
+		public String mKm () {
+			return String.format("%03d",random(3, 100));
+		}
+<<<<<<< HEAD
 	   public int setCalendars(){
 	        int[] maxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	        int iMinMonth = 1;
@@ -113,10 +160,92 @@ public class UserProxy extends Proxy{
 
 		String name[] = 
 				"a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z".split(",");
+=======
+>>>>>>> sjw
 		
-		for (int i = 0 ; i < 7; i++) {
-			buffer.append(name[ran.nextInt(name.length)]);
+		public String mAuthor () {
+			return (random(10, 10))%2 == 0 ? "1" : "0"; 
 		}
+		
+		public String mCalendars(){
+			  int[] maxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+			  int iMinMonth = 1;
+		      int iMaxMonth = 12;
+		      int iRandomMonth = (int)(Math.random() * iMaxMonth - iMinMonth + 1) + iMinMonth;
+		      int iRandomDay = (int)(Math.random() * (maxDays[iRandomMonth-1] -2) + 1);
+		      int iUserBirthMonth = iRandomMonth;
+		      int iUserBirthDay = iRandomDay;
+		      return iUserBirthMonth +"-"+ iUserBirthDay;
+		      
+		    }
+		
+		public String eng(int x) {
+			String result = "";
+			for(int i = 0; i< x; i++) result += (char)((int)(Math.random()*26)+97);
+			return result;
+		}
+		
+		public String mUid() {
+			return eng(8);
+		}
+		
+		public String mEMail() {
+			String result = eng((int)random(1, 10))+"@";
+			switch((int)random(1, 10)) {
+			case 0 : result += "naver.com"; break;
+			case 1 : result += "google.com"; break;
+			case 2 : result += "daum.com"; break;
+			case 3 : result += "dreamwiz.com"; break;
+			case 4 : result += "yahoo.com"; break;
+			case 5 : result += "oohoo.com"; break;
+			case 6 : result += "fff.com"; break;
+			case 7 : result += "yyy.com"; break;
+			case 8 : result += "xxxx.com"; break;
+			case 9 : result += "zzzzz.com"; break;
+			default : break;
+			}
+			return result;
+		}
+		
+		public List<String> makeLoc() {
+			List<String> result = new ArrayList<>();
+			String url = "https://map.naver.com/v5/api/search?caller=pcweb&query=풋살장&type=all&page=2&displayCount=100&lang=ko";
+			try {
+				Document rawData;
+				rawData = Jsoup.connect(url).timeout(10*1000)
+						.ignoreContentType(true)
+						.get();
+			String input = rawData.text(),ptnS=""; 
+			int cut = 0;
+			ptnS = "\"address\":\"(.*?)\"";
+			cut = 10; 
+			result = matching(input,ptnS,cut);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
+		/* private String makeLoc() {
+			   	List<String> loc = Arrays.asList("서울, 경기, 충청");
+			   	Collections.shuffle(loc);
+				return loc.get(0);
+			}*/
+		 
+		public List<String> matching(String input, String ptnS, int cut){
+			List<String> x = new ArrayList<>();
+			Pattern ptn = Pattern.compile(ptnS);
+			Matcher matcher = ptn.matcher(input);
+			while(matcher.find()){
+				x.add(matcher.group().substring(cut).replace("\"","")); 
+			}
+			return x;
+		}
+		//uid, upw, uname, age, gender, loc, tel, email, 
+		//upoint, score, mvp, win, hitmap, km, heart, author, lolname
+		public User makeUser(String loc) {
+			return new User(mUid(),"1",mName(),mAge(),mGender(),loc,mTel(),mEMail(),mUpoint(),mScore(),mMvp(),mWin(),"hit",mKm(),"심박",mAuthor(),"소환사");
+		}
+<<<<<<< HEAD
 		return buffer.toString();
 	}
 	public User makeUser() {
@@ -128,6 +257,15 @@ public class UserProxy extends Proxy{
 	   public void insertUsers() {
 		   for(int i=0; i<500;i++) {
 			   userMapper.insertUser(makeUser());
+=======
+	@Transactional 
+	   public void insertUsers() {
+			List<String> x = new ArrayList<>();
+			x = makeLoc();
+		   for(String y : x) {
+			   txMapper.insertUser(makeUser(y));
+			   System.out.println(makeUser(y));
+>>>>>>> sjw
 		   }
 	   }
 }

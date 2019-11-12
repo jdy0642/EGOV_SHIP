@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Qualifier;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> sjw
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,14 +21,18 @@ import com.ship.web.usr.UserMapper;
 public class TxService {
 	@Autowired TxMapper txMapper;
 	@Autowired UserMapper userMapper;
+<<<<<<< HEAD
 	@Autowired CrawlingProxy pxy;
+=======
+	@Autowired CrawlingProxy crawler;
+>>>>>>> sjw
 	@Autowired UserProxy manager;
 	
 	@SuppressWarnings("unchecked")
 	public List<String> crawling(Map<?,?> paramMap){
 		List<String> txServiceList = new ArrayList<>();
 		txServiceList.clear();
-		txServiceList = (List<String>) pxy.crawl(paramMap);
+		txServiceList = (List<String>) crawler.crawl(paramMap);
 		return txServiceList;
 	}
 	@Transactional

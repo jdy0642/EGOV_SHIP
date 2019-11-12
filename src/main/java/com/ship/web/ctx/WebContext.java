@@ -23,12 +23,21 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
+<<<<<<< HEAD
 
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
 		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
 		MultipartConfigElement multipartConfig = new MultipartConfigElement(Path.UPLOAD_PATH.toString()
 				,20971520,41943040,20971520);
+=======
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
+		MultipartConfigElement multipartConfig = new MultipartConfigElement
+				(Path.UPLOAD_PATH.toString(),20971520, 41943040, 20971520);
+>>>>>>> sjw
 		registration.setMultipartConfig(multipartConfig);
 	}
 }

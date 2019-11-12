@@ -28,17 +28,27 @@ public enum SQL {
 		case CREATEFUTTAB:
 			result = "CREATE TABLE FUTSAL (" + 
 					"NICKNAME VARCHAR(10) PRIMARY KEY," + 
+<<<<<<< HEAD
 					"SCORE VARCHAR(10)," + 
+=======
+					"USERID VARCHAR(20)," + 
+					"SCORE VARCHAR(10)," +  
+>>>>>>> sjw
 					"WIN VARCHAR(20)," + 
 					"HITMAP VARCHAR(20)," + 
 					"KM VARCHAR(20)," + 
 					"HEART VARCHAR(100)," + 
 					"FUTBLACK VARCHAR(20)," + 
+<<<<<<< HEAD
 					"USERID VARCHAR(20), FOREIGN KEY (USERID) REFERENCES USER (USERID)" +
+=======
+					"ROPORTNUM VARCHAR(100)" + 
+>>>>>>> sjw
 					")";
 			break;
 			
 		case CREATEPOSTTAB:
+<<<<<<< HEAD
 			result = "CREATE TABLE ARTICLE (" + 
 					"ARTSEQ INT AUTO_INCREMENT PRIMARY KEY," + 
 					"TITLE VARCHAR(30)," + 
@@ -47,6 +57,17 @@ public enum SQL {
 					"COMMENTS VARCHAR(30)," + 
 					"PAGENO VARCHAR(30)," + 
 					"FILE VARCHAR(30)," + 
+=======
+			result = "CREATE TABLE POST (" + 
+					"POSTNUM VARCHAR(30) INT AUTO_INCREMENT PRIMARY KEY," + 
+					"POSTTITLE VARCHAR(30)," + 
+					"POSTTEXT VARCHAR(30)," + 
+					"IMG VARCHAR(30)," + 
+					"INTERLOCK VARCHAR(30)," + 
+					"CATEGORY VARCHAR(30)," + 
+					"USERID VARCHAR(30)," + 
+					"NICKNAME VARCHAR(10), FOREIGN KEY (NICKNAME) REFERENCES FUTSAL (NICKNAME)" + 
+>>>>>>> sjw
 					")";
 			break;
 			
