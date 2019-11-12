@@ -13,4 +13,5 @@ public interface ArticleMapper {
 	public List<Article> selectList(PageProxy pxy);
 	public void updateArticle(Article param);
 	public void deleteArticle(Article param);
+	public int artseqMax();
 }

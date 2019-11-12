@@ -33,26 +33,25 @@ public enum SQL {
 		case CREATEFUTTAB:
 			result = "CREATE TABLE FUTSAL (" + 
 					"NICKNAME VARCHAR(10) PRIMARY KEY," + 
-					"USER_ID VARCHAR(20)," + 
-					"SCORE VARCHAR(10)," + 
-					"MVP VARCHAR(20)," + 
+					"USERID VARCHAR(20)," + 
+					"SCORE VARCHAR(10)," +  
 					"WIN VARCHAR(20)," + 
 					"HITMAP VARCHAR(20)," + 
 					"KM VARCHAR(20)," + 
 					"HEART VARCHAR(100)," + 
-					"FUT_BLACK VARCHAR(20)," + 
-					"ROPORT_NUM VARCHAR(100)" + 
+					"FUTBLACK VARCHAR(20)," + 
+					"ROPORTNUM VARCHAR(100)" + 
 					")";
 			break;
 		case CREATEPOSTTAB:
 			result = "CREATE TABLE POST (" + 
-					"POST_NUM VARCHAR(30) PRIMARY KEY," + 
-					"POST_TITLE VARCHAR(30)," + 
-					"POST_TEXT VARCHAR(30)," + 
+					"POSTNUM VARCHAR(30) INT AUTO_INCREMENT PRIMARY KEY," + 
+					"POSTTITLE VARCHAR(30)," + 
+					"POSTTEXT VARCHAR(30)," + 
 					"IMG VARCHAR(30)," + 
 					"INTERLOCK VARCHAR(30)," + 
 					"CATEGORY VARCHAR(30)," + 
-					"USER_ID VARCHAR(30)," + 
+					"USERID VARCHAR(30)," + 
 					"NICKNAME VARCHAR(10), FOREIGN KEY (NICKNAME) REFERENCES FUTSAL (NICKNAME)" + 
 					")";
 			break;

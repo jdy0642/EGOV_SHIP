@@ -5,8 +5,8 @@
 <mapper namespace="com.ship.web.brd.ArticleMapper">
     
     <insert id="insertArticle" parameterType="Article" >
-        INSERT INTO ARTICLE (USER_ID, BOARD_TYPE, TITLE, CONTENT) VALUES (
-             #{uid}, #{boardtype}, #{title}, #{content}
+        INSERT INTO ARTICLE (ARTSEQ, USER_ID, BOARD_TYPE, TITLE, CONTENT) VALUES (
+             #{artseq}, #{uid}, #{boardtype}, #{title}, #{content}
         )
     </insert>
     
@@ -31,4 +31,9 @@
 			SET CONTENT = #{content}, TITLE = #{title}
 			WHERE ARTSEQ = #{artseq}
   	</update>
+  	
+  	<select id="artseqMax" resultType="int">
+    		SELECT MAX(artseq)
+			FROM article
+    </select>
 </mapper>
