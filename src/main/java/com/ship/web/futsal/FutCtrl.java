@@ -12,21 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ship.web.enums.SQL;
 import com.ship.web.pxy.Box;
+import com.ship.web.pxy.Trunk;
 
 @RestController
 @RequestMapping("/fut")
 public class FutCtrl {
-	@Autowired Box map;
+	@Autowired Trunk<Object> trunk;
 	@Autowired FutMapper futMapper;
 	
 	@GetMapping("/create/Futtab")
 	public Map<?,?> createFutTab(){
 		HashMap<String, String> paramMap = new HashMap<>();
-		map.accept(Arrays.asList("CREATEFUTTAB","msg")
+		trunk.put(Arrays.asList("CREATEFUTTAB","msg")
 				,Arrays.asList(SQL.CREATEFUTTAB.toString(),"Sucess"));
 		Consumer<Map<?, ?>> c = x-> futMapper.createFuttab(x);
 		c.accept(paramMap);
-		return map.get();
+		return trunk.get();
 	}
 	@GetMapping("/create/Posttab")
 	public Map<?,?> createPostTab(){

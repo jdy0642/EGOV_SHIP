@@ -1,5 +1,4 @@
 package com.ship.web.aop;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ship.web.pxy.Box;
+import com.ship.web.pxy.Trunk;
+import com.ship.web.pxy.UserProxy;
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -20,7 +20,8 @@ public class TxController {
 	//@Autowired HashMap<String, String> map;
 	@Autowired Printer p;
 	@Autowired TxService txService; 
-	@Autowired Box map;
+	@Autowired Trunk<Object> trunk;
+	@Autowired UserProxy manager;
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch){
@@ -33,9 +34,7 @@ public class TxController {
 	}
 	@GetMapping("/register/users")
 	public Map<?,?> registerUsers(){
-		int userCount =  txService.registerUsers();
-		p.accept("서비스 카운팅: "+userCount);
-		map.accept(Arrays.asList("userCount"), Arrays.asList(userCount));
-		return map.get();
+		manager.insertUsers();
+		return trunk.get();
 	}
 }

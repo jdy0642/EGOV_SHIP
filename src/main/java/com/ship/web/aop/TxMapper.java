@@ -22,5 +22,6 @@ public interface TxMapper {
             + "#{tel},#{email},#{upoint},#{score},#{mvp}, #{win}, "
             + "#{hitmap}, #{km}, #{heart}, #{author}, #{lolname})")
 	public void insertUser(User u);
+	
 		
 }

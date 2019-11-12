@@ -4,20 +4,22 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ship.web.usr.User;
+import com.ship.web.usr.UserMapper;
 @Component("manager")
 public class UserProxy extends Proxy{
+	@Autowired UserMapper userMapper;
+	
 	 private char[] charaters = {'a','b','c','d','e','f','g','h','i',
 			   'j','k','l','m','n','o','p','q','r','s','t','u','v','w',
 			   'x','y','z','0','1','2','3','4','5','6','7','8','9'};
 	   private int mailLength = 6; 
 	   
-	   public String makeUsers(){
-	//   uid,upw, uname,  loc, tel, point, age, gender,
-//	    email, score, mvp, win, hitmap, km, heart, author, lolName
+	   public String makeUname(){
 	       List<String> fName = Arrays.asList("김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안",
 	                 "송", "류", "전", "홍", "고", "문", "양", "손", "배", "조", "백", "허", "유", "남", "심", "노", "정", "하", "곽", "성", "차", "주",
 	                 "우", "구", "신", "임", "나", "전", "민", "유", "진", "지", "엄", "채", "원", "천", "방", "공", "강", "현", "함", "변", "염", "양",
@@ -56,12 +58,8 @@ public class UserProxy extends Proxy{
 	      }
 	// uid,upw, uname,  loc, tel, point, age, gender,
 	// email, score, mvp, win, hitmap, km, heart, author, lolName
-	   public User makeUser() {
-		      return new User(makeUid(),"1", makeUname(),makeLoc(),makeGender(), makeTel(), makeAge(),
-		    		  makeEmail(), makeScore(), makeMvp(), makeWin(), makeHitmap(), makeKm(), makeHeart(),
-		    		  makeHitmap(), makeAuthor(), makeLolName());
-		   }
-	   private String makeLolName() {
+	   
+	private String makeLolName() {
 		return null;
 	}
 	private String makeScore() {
@@ -82,9 +80,6 @@ public class UserProxy extends Proxy{
 	private String makeWin() {
 		return null;
 	}
-	private String makeMvp() {
-		return null;
-	}
 	private String makeEmail() {
 	    StringBuffer sb = new StringBuffer();
 
@@ -97,30 +92,21 @@ public class UserProxy extends Proxy{
 	    return sb.toString()+"gmail.com";
 	}
 	private String makeGender() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	private String makeAge() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	private String makePoint() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	private String makeTel() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	private String makeHeart() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private String makeUname() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	private String makeUid() {
 		StringBuffer buffer = new StringBuffer();
 		Random ran = new Random();
@@ -131,12 +117,17 @@ public class UserProxy extends Proxy{
 		for (int i = 0 ; i < 7; i++) {
 			buffer.append(name[ran.nextInt(name.length)]);
 		}
-		return null;
+		return buffer.toString();
 	}
+	public User makeUser() {
+	      return new User(makeUid(),"1", makeUname(),makeLoc(),makeGender(), makeTel(), makeAge(),
+	    		  makeEmail(), makeScore(), makeWin(), makeHitmap(), makeKm(), makeHeart(),
+	    		  makeHitmap(), makeAuthor(), makeLolName());
+	   }
 	@Transactional 
 	   public void insertUsers() {
 		   for(int i=0; i<500;i++) {
-			   
+			   userMapper.insertUser(makeUser());
 		   }
 	   }
 }

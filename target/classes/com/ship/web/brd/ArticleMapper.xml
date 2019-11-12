@@ -9,7 +9,6 @@
              #{uid}, #{boardtype}, #{title}, #{content}
         )
     </insert>
-    
     <select id="countArticle" resultType="string">
     		SELECT COUNT(ARTSEQ) FROM ARTICLE 
     </select>

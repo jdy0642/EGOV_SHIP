@@ -46,7 +46,7 @@ adm =(()=>{
 		)
 		$.each(
 				[{txt:'고객관리',name:'cust_mgmt'},
-				{txt:'구장등록',name:'stad_reg'},
+				{txt:'게시판관리',name:'brd_mgmt'},
 				{txt:'웹크롤링',name:'web_crawl'},
 				{txt:'구장관리',name:'stad_mgmt'},
 				{txt:'수익구조',name:'data_graph'}],
@@ -63,8 +63,9 @@ adm =(()=>{
 					//$('#right').append(cust_vue.cust())
 					cust_mgmt();
 					break;
-				case 'stad_reg':
+				case 'brd_mgmt':
 					$('#right').empty()
+					brd_mgmt()
 					break;
 				case 'stad_mgmt':
 					$('#right').empty()
@@ -77,6 +78,16 @@ adm =(()=>{
 					webCrawl()
 					break;
 				}
+			})
+		})
+	}
+	let brd_mgmt=()=>{
+		$(' <a> 게시판 테이블 생성 </a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/articles/create/table',d=>{
+				alert('테이블 생성? : '+d.msg)
 			})
 		})
 	}
@@ -141,7 +152,7 @@ adm =(()=>{
 			})
 		})
 		
-		$('<a>고객 대량정보 입력<br/></a>')
+		$('<br/><a>고객 대량정보 입력</a>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -150,7 +161,7 @@ adm =(()=>{
 			})
 		})
 		
-		$('<a>RES테이블 생성</a><br>')
+		$('<br><a>RES테이블 생성</a>')
 		.appendTo('#right').click(e=>{
 			e.preventDefault()
 			$.getJSON(_+'/reser/create/res',d=>{
