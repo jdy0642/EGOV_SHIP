@@ -5,8 +5,13 @@
 <mapper namespace="com.ship.web.brd.ArticleMapper">
     
     <insert id="insertArticle" parameterType="Article" >
+<<<<<<< HEAD
         INSERT INTO ARTICLE (ARTSEQ, USER_ID, BOARD_TYPE, TITLE, CONTENT) VALUES (
              #{artseq}, #{uid}, #{boardtype}, #{title}, #{content}
+=======
+        INSERT INTO ARTICLE (USER_ID, TITLE, CONTENT) VALUES (
+             #{uid}, #{title}, #{content}
+>>>>>>> ljs
         )
     </insert>
     <select id="countArticle" resultType="string">

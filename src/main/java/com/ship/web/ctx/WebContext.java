@@ -24,6 +24,18 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 		return new String[] { "/" };
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		// TODO Auto-generated method stub
+		registration.setInitParameter("thorwExceptionIfNoHandlerFound", "true");
+		MultipartConfigElement multipartConfig = new MultipartConfigElement(
+				Path.UPLOAD_PATH.toString(),20971520,41943040,20971520);
+		registration.setMultipartConfig(multipartConfig);
+	}
+>>>>>>> ljs
 
 	@Override
 	protected void customizeRegistration(Dynamic registration) {

@@ -1,9 +1,12 @@
 package com.ship.web.ctx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.servlet.MultipartConfigElement;
 
 =======
 >>>>>>> sjw
+=======
+>>>>>>> ljs
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.multipart.MultipartResolver;
@@ -32,6 +35,7 @@ public class ServletContext implements WebMvcConfigurer {
 		.addResourceLocations("/resources/");
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Bean
 	public MultipartResolver multipartResolver() {
 		StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
@@ -42,6 +46,12 @@ public class ServletContext implements WebMvcConfigurer {
 		StandardServletMultipartResolver resolver
 			= new StandardServletMultipartResolver();
 >>>>>>> sjw
+=======
+	
+	@Bean
+	public MultipartResolver multipartResolver() {
+		StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
+>>>>>>> ljs
 		return resolver;
 	}
 }

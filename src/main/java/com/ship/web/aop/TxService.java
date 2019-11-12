@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Qualifier;
 =======
 import org.springframework.beans.factory.annotation.Autowired;
 >>>>>>> sjw
+=======
+import org.springframework.beans.factory.annotation.Qualifier;
+>>>>>>> ljs
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,10 +26,14 @@ public class TxService {
 	@Autowired TxMapper txMapper;
 	@Autowired UserMapper userMapper;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Autowired CrawlingProxy pxy;
 =======
 	@Autowired CrawlingProxy crawler;
 >>>>>>> sjw
+=======
+	@Autowired CrawlingProxy crawler;
+>>>>>>> ljs
 	@Autowired UserProxy manager;
 	
 	@SuppressWarnings("unchecked")
@@ -39,5 +47,12 @@ public class TxService {
 	public int registerUsers(){
 		manager.insertUsers();
 		return userMapper.countUsers();
+<<<<<<< HEAD
+=======
+	}
+	public int trucateUsers() {
+		
+		return 0;
+>>>>>>> ljs
 	}
 }

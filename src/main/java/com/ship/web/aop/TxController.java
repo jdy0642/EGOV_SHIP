@@ -3,18 +3,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+import org.springframework.beans.factory.annotation.Qualifier;
+>>>>>>> ljs
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 import com.ship.web.pxy.Trunk;
 <<<<<<< HEAD
 import com.ship.web.pxy.UserProxy;
 =======
 >>>>>>> sjw
+=======
+import com.ship.web.pxy.Box;
+import com.ship.web.pxy.Trunk;
+>>>>>>> ljs
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -26,9 +35,12 @@ public class TxController {
 	@Autowired TxService txService; 
 	@Autowired Trunk<Object> trunk;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Autowired UserProxy manager;
 =======
 >>>>>>> sjw
+=======
+>>>>>>> ljs
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch){
@@ -47,7 +59,11 @@ public class TxController {
 		int userCount =  txService.registerUsers();
 		p.accept("서비스 카운팅: "+userCount);
 		trunk.put(Arrays.asList("userCount"), Arrays.asList(userCount));
+<<<<<<< HEAD
 >>>>>>> sjw
+=======
+>>>>>>> ljs
 		return trunk.get();
 	}
+	
 }

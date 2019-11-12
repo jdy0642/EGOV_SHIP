@@ -22,8 +22,11 @@ import com.ship.web.cmm.ISupplier;
 <<<<<<< HEAD
 import com.ship.web.pxy.PageProxy;
 import com.ship.web.pxy.Trunk;
+<<<<<<< HEAD
 =======
 >>>>>>> sjw
+=======
+>>>>>>> ljs
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.PageProxy;
 import com.ship.web.pxy.Trunk;
@@ -38,6 +41,7 @@ public class ArticleCtrl {
 	@Autowired ArticleMapper articleMapper;
 	@Autowired Box<Article> box;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Qualifier PageProxy pager;
 	@Autowired Trunk<Object> trunk;
 	
@@ -48,10 +52,14 @@ public class ArticleCtrl {
 	
 
 >>>>>>> sjw
+=======
+	@Autowired PageProxy pager;
+	@Autowired Trunk<Object> trunk;
+	
+>>>>>>> ljs
 	@PostMapping("/")
 	public Map<?,?> write(@RequestBody Article param) {
 		logger.info("롸이트");
-		param.setBoardtype("게시판");
 		IConsumer<Article> c = t -> articleMapper.insertArticle(param);
 		Supplier<Integer> y = () -> articleMapper.artseqMax();
 		param.setArtseq(String.format("%d",y.get()+1));
@@ -63,9 +71,13 @@ public class ArticleCtrl {
 		return trunk.get();
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> sjw
+=======
+	
+>>>>>>> ljs
 	@GetMapping("/page/{pageno}/size/{pageSize}")
 	public Map<?,?>  list(@PathVariable String pageno,
 			@PathVariable String pageSize){
@@ -74,18 +86,26 @@ public class ArticleCtrl {
 		pager.setPageSize(pager.integer(pageSize));
 		pager.paging();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		box.clear();
 =======
 >>>>>>> sjw
+=======
+		box.clear();
+>>>>>>> ljs
 		ISupplier<List<Article>> s = () -> articleMapper.selectList(pager);
 		printer.accept("해당 페이지\n"+s.get());
 		trunk.put(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
 		return trunk.get();
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> sjw
+=======
+	
+>>>>>>> ljs
 	@PutMapping("/{artseq}")
 	public Map<?,?> updateArticle(@PathVariable String artseq, @RequestBody Article param) {
 		logger.info("수정"+param);
@@ -96,9 +116,13 @@ public class ArticleCtrl {
 		return trunk.get();
 	} 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> sjw
+=======
+	
+>>>>>>> ljs
 	@DeleteMapping("/{artseq}")
 	public Map<?,?> deleteArticle(@PathVariable String artseq, @RequestBody Article param) {
 		logger.info("삭제");
@@ -109,9 +133,13 @@ public class ArticleCtrl {
 		return trunk.get();
 	} 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> sjw
+=======
+	
+>>>>>>> ljs
 	@GetMapping("/count")
 	public Map<?,?> count() {
 		logger.info("카운트");
@@ -120,6 +148,7 @@ public class ArticleCtrl {
 		trunk.put(Arrays.asList("count"), Arrays.asList(s.get()));
 		return trunk.get();
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 	@GetMapping("/fileupload")
 	public void fileUpload() {
@@ -130,5 +159,10 @@ public class ArticleCtrl {
 	public void fileUpload(@PathVariable String artseq) {
 		logger.info("파일업로드 진입 : {}", artseq);
 >>>>>>> sjw
+=======
+	@GetMapping("/fileupload")
+	public void fileUpload() {
+		
+>>>>>>> ljs
 	}
 }

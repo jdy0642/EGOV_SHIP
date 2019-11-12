@@ -6,7 +6,11 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+import org.springframework.beans.factory.annotation.Qualifier;
+>>>>>>> ljs
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,16 +18,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ship.web.enums.SQL;
 <<<<<<< HEAD
 import com.ship.web.pxy.Box;
+<<<<<<< HEAD
 =======
 >>>>>>> sjw
+=======
+>>>>>>> ljs
 import com.ship.web.pxy.Trunk;
 
 @RestController
 @RequestMapping("/fut")
 public class FutCtrl {
 	@Autowired Trunk<Object> trunk;
+<<<<<<< HEAD
+=======
+	@Autowired Box<Object> box;
+	
+>>>>>>> ljs
 	@Autowired FutMapper futMapper;
 	
+	@SuppressWarnings("unchecked")
 	@GetMapping("/create/Futtab")
 	public Map<?,?> createFutTab(){
 		HashMap<String, String> paramMap = new HashMap<>();

@@ -10,6 +10,9 @@ import com.ship.web.cmm.IFunction;
 public class Proxy {
 	public int integer(String param) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ljs
 		IFunction<String,Integer> f = Integer :: parseInt;
 		return f.apply(param);
 	}
@@ -19,13 +22,24 @@ public class Proxy {
 	}
 
 	public int random(int i, int o) {
+<<<<<<< HEAD
 	      BiFunction<Integer,Integer,Integer> p = (a,b) ->(int)(Math.random()*(b-a))+a; 
 	      return p.apply(i, o);
 	   }
+=======
+	    BiFunction<Integer,Integer,Integer> p = (a,b) ->(int)(Math.random()*(b-a))+a; 
+	      return p.apply(i, o);
+	   }
+	public boolean equals(String p1, String p2) {
+		  BiFunction<String, String, Boolean> f = String :: equals;
+		   return f.apply(p1, p2);
+	   }
+>>>>>>> ljs
 	public int[] array(int size) {
 		Function<Integer, int[]> f = int[] :: new;
 		return f.apply(size);
 	}
+<<<<<<< HEAD
 =======
 		//IFunction<String,Integer> f = s -> Integer.parseInt(s);
 		Function<String, Integer> f = Integer :: parseInt;
@@ -46,4 +60,7 @@ public class Proxy {
 	   return f.apply(size);
    }
 >>>>>>> sjw
+=======
+	
+>>>>>>> ljs
 }

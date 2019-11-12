@@ -9,12 +9,15 @@ import lombok.Data;
 @Component @Data @Lazy
 public class Box<T> {
 	
+<<<<<<< HEAD
 =======
 
 import org.springframework.stereotype.Component;
 @Component
 public class Box<T> {
 >>>>>>> sjw
+=======
+>>>>>>> ljs
 	private ArrayList<T> list;
 	public void add(T item) {
 		list = new ArrayList<T>();
@@ -26,7 +29,11 @@ public class Box<T> {
 	public String toString() {return list.toString();}
 	public void clear() {list.clear();}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> sjw
+=======
+
+>>>>>>> ljs
 }
