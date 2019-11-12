@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ship.web.enums.SQL;
-import com.ship.web.pxy.ProxyMap;
+import com.ship.web.pxy.Box;
 
 @RestController
 @RequestMapping("/fut")
 public class FutCtrl {
-	@Autowired ProxyMap map;
+	@Autowired Box map;
 	@Autowired FutMapper futMapper;
 	
 	@GetMapping("/create/Futtab")

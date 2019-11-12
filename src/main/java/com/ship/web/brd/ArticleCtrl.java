@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ship.web.cmm.IConsumer;
-import com.ship.web.cmm.IPredicate;
 import com.ship.web.cmm.ISupplier;
 import com.ship.web.pxy.PageProxy;
-import com.ship.web.pxy.ProxyMap;
+import com.ship.web.pxy.Box;
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -31,8 +30,10 @@ public class ArticleCtrl {
 	@Autowired ArticleMapper articleMapper;
 	@Autowired List<Article> list;
 	@Qualifier PageProxy pager;
-	@Qualifier ProxyMap box;
+	@SuppressWarnings("rawtypes")
+	@Qualifier Box box;
 	
+	@SuppressWarnings("unchecked")
 	@PostMapping("/")
 	public Map<?,?> write(@RequestBody Article param) {
 		logger.info("롸이트");
@@ -44,6 +45,7 @@ public class ArticleCtrl {
 				Arrays.asList("SUCCESS",s.get()));
 		return box.get();
 	}
+	@SuppressWarnings("unchecked")
 	@GetMapping("/page/{pageno}/size/{pageSize}")
 	public Map<?,?>  list(@PathVariable String pageno,
 			@PathVariable String pageSize){
@@ -57,6 +59,7 @@ public class ArticleCtrl {
 		box.accept(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
 		return box.get();
 	}
+	@SuppressWarnings("unchecked")
 	@PutMapping("/{artseq}")
 	public Map<?,?> updateArticle(@PathVariable String artseq, @RequestBody Article param) {
 		logger.info("수정"+param);
@@ -66,6 +69,7 @@ public class ArticleCtrl {
 		box.accept(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return box.get();
 	} 
+	@SuppressWarnings("unchecked")
 	@DeleteMapping("/{artseq}")
 	public Map<?,?> deleteArticle(@PathVariable String artseq, @RequestBody Article param) {
 		logger.info("삭제");
@@ -75,6 +79,7 @@ public class ArticleCtrl {
 		box.accept(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return box.get();
 	} 
+	@SuppressWarnings("unchecked")
 	@GetMapping("/count")
 	public Map<?,?> count() {
 		logger.info("카운트");

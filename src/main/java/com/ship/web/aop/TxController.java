@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ship.web.pxy.ProxyMap;
+import com.ship.web.pxy.Box;
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -20,7 +20,7 @@ public class TxController {
 	//@Autowired HashMap<String, String> map;
 	@Autowired Printer p;
 	@Autowired TxService txService; 
-	@Autowired ProxyMap map;
+	@Autowired Box map;
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch){
