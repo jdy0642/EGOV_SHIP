@@ -44,6 +44,7 @@ public class ArticleCtrl {
 				Arrays.asList("SUCCESS",s.get()));
 		return box.get();
 	}
+	//
 	@GetMapping("/page/{pageno}/size/{pageSize}")
 	public Map<?,?>  list(@PathVariable String pageno,
 			@PathVariable String pageSize){
