@@ -116,18 +116,24 @@ public enum SQL {
 			result = "DROP TABLE USER";
 			break;
 		case CREATE_ADMIN:
-			result = "CREATE TABLE ADMIN(\r\n" + 
-					"	AID VARCHAR(20) PRIMARY KEY,\r\n" + 
-					"	APW VARCHAR(20),\r\n" + 
-					"	ANAME VARCHAR(20)\r\n" + 
+			result = "CREATE TABLE ADMIN(\n" + 
+					"	ADMINID VARCHAR(30) PRIMARY KEY,\n" + 
+					"    ADMINPW VARCHAR(30),\n" + 
+					"    ADMINNAME VARCHAR(30),\n" + 
+					"    ADMINTEL VARCHAR(30),\n" + 
+					"    ADMINEMAIL VARCHAR(30),\n" + 
+					"    REGISTER VARCHAR(30),\n" + 
+					"    REGISTERNUM VARCHAR(30),\n" + 
+					"    STADIUMID VARCHAR(30),\n" + 
+					"    STADIUMNUM VARCHAR(30)\n" + 
 					")";
 			break;
 		case CREATE_REVENUE:
-			result = "CREATE TABLE REVENUE(\r\n" + 
-					"	INCOME_DAY VARCHAR(30) PRIMARY KEY,\r\n" + 
-					"    INCOME_STADIUM VARCHAR(30),\r\n" + 
-					"    STADIUM_ID VARCHAR(30),\r\n" + 
-					"    DATE VARCHAR(30)\r\n" + 
+			result = "CREATE TABLE INCOME(\r\n" + 
+					"	INCOMEDAY VARCHAR(30) PRIMARY KEY,\r\n" + 
+					"    INCOMESTADIUM VARCHAR(30),\r\n" + 
+					"    STADIUMID VARCHAR(30),\r\n" + 
+					"    INCOMEDATE VARCHAR(30)\r\n" + 
 					")";
 			break;
 		}

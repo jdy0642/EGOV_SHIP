@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ship.web.cmm.IConsumer;
 import com.ship.web.cmm.ISupplier;
 import com.ship.web.pxy.PageProxy;
+import com.ship.web.pxy.Trunk;
 import com.ship.web.pxy.Box;
 import com.ship.web.utl.Printer;
 
@@ -28,10 +29,10 @@ public class ArticleCtrl {
 	@Autowired Article article;
 	@Autowired Printer printer;
 	@Autowired ArticleMapper articleMapper;
-	@Autowired List<Article> list;
-	@Qualifier PageProxy pager;
+	@Autowired Box<Article> box;
+	@Autowired PageProxy pager;
 	@SuppressWarnings("rawtypes")
-	@Qualifier Box box;
+	@Autowired Trunk<Object> map;
 	
 	@SuppressWarnings("unchecked")
 	@PostMapping("/")
@@ -41,9 +42,9 @@ public class ArticleCtrl {
 		IConsumer<Article> c = t -> articleMapper.insertArticle(param);
 		c.accept(param);
 		ISupplier<String> s =()-> articleMapper.countArticle();
-		box.accept(Arrays.asList("msg","count"),
+		map.put(Arrays.asList("msg","count"),
 				Arrays.asList("SUCCESS",s.get()));
-		return box.get();
+		return map.get();
 	}
 	@SuppressWarnings("unchecked")
 	@GetMapping("/page/{pageno}/size/{pageSize}")
@@ -53,11 +54,10 @@ public class ArticleCtrl {
 		pager.setPageNum(pager.integer(pageno));
 		pager.setPageSize(pager.integer(pageSize));
 		pager.paging();
-		list.clear();
 		ISupplier<List<Article>> s = () -> articleMapper.selectList(pager);
 		printer.accept("해당 페이지\n"+s.get());
-		box.accept(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
-		return box.get();
+		map.put(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
+		return map.get();
 	}
 	@SuppressWarnings("unchecked")
 	@PutMapping("/{artseq}")
@@ -66,8 +66,8 @@ public class ArticleCtrl {
 		IConsumer<Article> c = t -> articleMapper.updateArticle(param);
 		c.accept(param);
 		logger.info("수정2");
-		box.accept(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
-		return box.get();
+		map.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
+		return map.get();
 	} 
 	@SuppressWarnings("unchecked")
 	@DeleteMapping("/{artseq}")
@@ -76,8 +76,8 @@ public class ArticleCtrl {
 		IConsumer<Article> c = t -> articleMapper.deleteArticle(param);
 		c.accept(param);
 		logger.info("삭제2");
-		box.accept(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
-		return box.get();
+		map.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
+		return map.get();
 	} 
 	@SuppressWarnings("unchecked")
 	@GetMapping("/count")
@@ -85,7 +85,11 @@ public class ArticleCtrl {
 		logger.info("카운트");
 		ISupplier<String> s = () -> articleMapper.countArticle(); 
 		logger.info("카운트2/"+s.get());
-		box.accept(Arrays.asList("count"), Arrays.asList(s.get()));
-		return box.get();
+		map.put(Arrays.asList("count"), Arrays.asList(s.get()));
+		return map.get();
+	}
+	@GetMapping("/fileupload")
+	public void fileUpload() {
+		
 	}
 }

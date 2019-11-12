@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Admin {
-	private String aid,apw,aname;
+	private String adminid,adminpw,adminname,admintel,adminemail,register,registernum,stadiumid,stadiumnum;
 }

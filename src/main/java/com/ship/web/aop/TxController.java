@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ship.web.pxy.Box;
+import com.ship.web.pxy.Trunk;
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -20,7 +21,7 @@ public class TxController {
 	//@Autowired HashMap<String, String> map;
 	@Autowired Printer p;
 	@Autowired TxService txService; 
-	@Autowired Box map;
+	@Autowired Trunk<Object> map;
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch){
@@ -35,7 +36,7 @@ public class TxController {
 	public Map<?,?> registerUsers(){
 		int userCount =  txService.registerUsers();
 		p.accept("서비스 카운팅: "+userCount);
-		map.accept(Arrays.asList("userCount"), Arrays.asList(userCount));
+		map.put(Arrays.asList("userCount"), Arrays.asList(userCount));
 		return map.get();
 	}
 }

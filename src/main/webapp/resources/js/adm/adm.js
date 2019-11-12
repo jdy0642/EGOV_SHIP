@@ -10,7 +10,6 @@ adm =(()=>{
 	      img=$.img()
 	      navi_js = js+'/cmm/navi.js'
 	      navi_vue_js = js+'/vue/navi_vue.js'
-	      
 	}
 	let onCreate=()=>{
 		init()
@@ -24,17 +23,14 @@ adm =(()=>{
 		})
 	}
 	let setContentView=()=>{
-		
 		$('body').html(navi_vue.navi())
 		navi.onCreate()
-		
 		$('<table id="tab">'+
 			'  <tr>'+
 			'  </tr>'+
 			'</table>')
 		.css({border: '1px solid black',width: '80%', height:'80%', margin:'0 auto'})
 		.appendTo('body')
-		
 		$.each(
 				[{id:'left',width:'20%'},
 				{id:'right',width:'80%'}],
@@ -46,7 +42,7 @@ adm =(()=>{
 		)
 		$.each(
 				[{txt:'고객관리',name:'cust_mgmt'},
-				{txt:'구장등록',name:'stad_reg'},
+				{txt:'게시판관리',name:'brd_mgmt'},
 				{txt:'웹크롤링',name:'web_crawl'},
 				{txt:'구장관리',name:'stad_mgmt'},
 				{txt:'수익구조',name:'data_graph'}],
@@ -63,8 +59,9 @@ adm =(()=>{
 					//$('#right').append(cust_vue.cust())
 					cust_mgmt();
 					break;
-				case 'stad_reg':
+				case 'brd_mgmt':
 					$('#right').empty()
+					brd_mgmt()
 					break;
 				case 'stad_mgmt':
 					$('#right').empty()
@@ -81,7 +78,6 @@ adm =(()=>{
 		})
 	}
 	let webCrawl=()=>{
-			
 			$('</br></br></br><h2>Web Crawling</h2></br>'+
 				'<form id="crawl_form">'+
 				'  <select name="site" id="right2" size="1" >'+
@@ -112,8 +108,17 @@ adm =(()=>{
 			}
 		})
 	}
+	let brd_mgmt=()=>{
+		$(' <a>게시판 게시글 생성 </a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/articles/create/table',d=>{
+				alert('테이블 생성? : '+d.msg)
+			})
+		})
+	}
 	let cust_mgmt=()=>{
-		
 		$(' <a> 테이블 생성 </a>')
 		.appendTo('#right')
 		.click(e=>{
@@ -122,7 +127,6 @@ adm =(()=>{
 				alert('테이블 생성? : '+d.msg)
 			})
 		})
-		
 		$('<br/><a>데이터 베이스 생성</a>')
 		.appendTo('#right')
 		.click(e=>{
@@ -131,7 +135,6 @@ adm =(()=>{
 				alert('되냐?'+d.msg)
 			})
 		})
-		
 		$('<br/><a>고객 테이블 삭제</a>')
 		.appendTo('#right')
 		.click(e=>{
@@ -140,7 +143,6 @@ adm =(()=>{
 				alert('테이블 삭제? : '+d.msg)
 			})
 		})
-		
 		$('<a>고객 대량정보 입력<br/></a>')
 		.appendTo('#right')
 		.click(e=>{
@@ -149,7 +151,6 @@ adm =(()=>{
 				alert('일괄 등록된 유저의 수: '+d.msg)
 			})
 		})
-		
 		$('<a>RES테이블 생성</a><br>')
 		.appendTo('#right').click(e=>{
 			e.preventDefault()
@@ -157,7 +158,6 @@ adm =(()=>{
 				alert('테이블 생성 성공여부'+d.msg)
 			})
 		})
-		
 		$('<a>게임테이블 생성</a><br>')
 		.appendTo('#right').click(e=>{
 			e.preventDefault()
@@ -165,7 +165,6 @@ adm =(()=>{
 				alert('테이블 생성 성공여부'+d.msg)
 			})
 		})
-		
 		$('<a>리그오브레전드 테이블 생성<br/></a>')
 		.appendTo('#right')
 		.click(e=>{
@@ -174,7 +173,6 @@ adm =(()=>{
 				alert('lol테이블 생성'+d.msg)
 			})
 		})
-		
 		$('<a>리포트 테이블 생성<br/></a>')
 		.appendTo('#right')
 		.click(e=>{
@@ -183,7 +181,6 @@ adm =(()=>{
 				alert('report테이블 생성'+d.msg)
 			})
 		})
-		
 		$('<a>관리자 테이블 생성(클릭!)</a></br>')
 		.appendTo('#right')
 		.click(e=>{
@@ -192,7 +189,6 @@ adm =(()=>{
 			alert('관리자 테이블 생성: '+d.msg)
 			})
 		})
-		
 		$('<a>수익관리 테이블 생성(클릭!)</a></br>')
 		.appendTo('#right')
 		.click(e=>{
@@ -217,7 +213,6 @@ adm =(()=>{
 				alert("풋살테이블"+ d.msg)
 			})
 		})
-
 		}
 	return{onCreate}
 })()
