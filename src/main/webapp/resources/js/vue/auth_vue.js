@@ -279,9 +279,9 @@ auth_vue = {
 			'    <img class="mb-4" src="'+x.img+'/bootstrap-solid.svg" alt="" width="72" height="72">'+
 			'    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>'+
 			'    <label for="inputEmail" class="sr-only">Email address</label>'+
-			'    <input type="text" id="uid" class="form-control" placeholder="id" required="" autofocus="">'+
+			'    <input type="text" id="uid" value="a" class="form-control" placeholder="id" required="" autofocus="">'+
 			'    <label for="inputPassword" class="sr-only">Password</label>'+
-			'    <input type="password" id="upw" class="form-control" placeholder="Password" required="">'+
+			'    <input type="password" id="upw" value="1" class="form-control" placeholder="Password" required="">'+
 			'    <div class="checkbox mb-3">'+
 			'      <label>'+
 			'       <a id="a_go_join" href="#">회원가입</a> '+

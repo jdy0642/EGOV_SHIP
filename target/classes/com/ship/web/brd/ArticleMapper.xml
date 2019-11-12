@@ -5,8 +5,8 @@
 <mapper namespace="com.ship.web.brd.ArticleMapper">
     
     <insert id="insertArticle" parameterType="Article" >
-        INSERT INTO ARTICLE (USER_ID, BOARD_TYPE, TITLE, CONTENT) VALUES (
-             #{uid}, #{boardtype}, #{title}, #{content}
+        INSERT INTO ARTICLE (USER_ID, TITLE, CONTENT) VALUES (
+             #{uid}, #{title}, #{content}
         )
     </insert>
     

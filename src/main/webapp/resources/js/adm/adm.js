@@ -49,7 +49,8 @@ adm =(()=>{
 				{txt:'구장등록',name:'stad_reg'},
 				{txt:'웹크롤링',name:'web_crawl'},
 				{txt:'구장관리',name:'stad_mgmt'},
-				{txt:'수익구조',name:'data_graph'}],
+				{txt:'수익구조',name:'data_graph'},
+				{txt:'커뮤니티',name:'comm_mgmt'}],
 			(i,j)=>{
 			$('<div name="'+j.name+'">'+j.txt+'</div>')
 			.css({border: '1px solid #ddd', margin: 'auto 0', 'line-height': '50px'})
@@ -75,6 +76,10 @@ adm =(()=>{
 				case 'web_crawl':
 					$('#right').empty()
 					webCrawl()
+					break;
+				case 'comm_mgmt':
+					$('#right').empty()
+					comm_mgmt()
 					break;
 				}
 			})
@@ -218,6 +223,16 @@ adm =(()=>{
 			})
 		})
 
-		}
+	}
+	let comm_mgmt =()=>{
+		$('<a>커뮤니티 테이블 생성<br/></a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/reports/create/report',d=>{
+				alert('report테이블 생성'+d.msg)
+			})
+		})
+	}
 	return{onCreate}
 })()
