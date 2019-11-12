@@ -48,7 +48,7 @@ adm =(()=>{
 				[{txt:'고객관리',name:'cust_mgmt'},
 				{txt:'구장등록',name:'stad_reg'},
 				{txt:'웹크롤링',name:'web_crawl'},
-				{txt:'구장관리',name:'stad_mgmt'},
+				{txt:'커뮤니티',name:'comm_mgmt'},
 				{txt:'수익구조',name:'data_graph'}],
 			(i,j)=>{
 			$('<div name="'+j.name+'">'+j.txt+'</div>')
@@ -66,7 +66,7 @@ adm =(()=>{
 				case 'stad_reg':
 					$('#right').empty()
 					break;
-				case 'stad_mgmt':
+				case 'comm_mgmt':
 					$('#right').empty()
 					break;
 				case 'data_graph':
@@ -110,6 +110,16 @@ adm =(()=>{
 				alert('크롤링')
 			})
 			}
+		})
+	}
+	let comm_mgmt=()=>{
+		$(' <a> 커뮤니티 테이블 생성 </a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/articles/create/table',d=>{
+				alert('테이블 생성? : '+d.msg)
+			})
 		})
 	}
 	let cust_mgmt=()=>{

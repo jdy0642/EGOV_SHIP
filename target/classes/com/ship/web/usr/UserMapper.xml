@@ -24,8 +24,8 @@
     </select>
     
     <insert id="insertUser" parameterType="User" >
-        INSERT INTO USER (USER_ID, USER_PW, USER_NAME) VALUES (
-            #{uid}, #{upw}, #{uname}
+        INSERT INTO USER (USER_ID, USER_PW, USER_NAME, EMAIL) VALUES (
+            #{uid}, #{upw}, #{uname}, #{email}
         )
     </insert>
   
