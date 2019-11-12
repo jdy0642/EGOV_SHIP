@@ -4,10 +4,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 =======
 import org.springframework.beans.factory.annotation.Qualifier;
 >>>>>>> ljs
+=======
+import org.springframework.beans.factory.annotation.Qualifier;
+>>>>>>> yyh
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +28,12 @@ import com.ship.web.pxy.UserProxy;
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.Trunk;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> ljs
 =======
 >>>>>>> hsc1
+=======
+>>>>>>> yyh
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -36,6 +43,7 @@ public class TxController {
 	//@Autowired HashMap<String, String> map;
 	@Autowired Printer p;
 	@Autowired TxService txService; 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	@Autowired Trunk<Object> trunk;
 <<<<<<< HEAD
@@ -48,6 +56,9 @@ public class TxController {
 =======
 	@Autowired Trunk<Object> map;
 >>>>>>> hsc1
+=======
+	@Autowired Trunk<Object> trunk;
+>>>>>>> yyh
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch){
@@ -66,6 +77,7 @@ public class TxController {
 		int userCount =  txService.registerUsers();
 		p.accept("서비스 카운팅: "+userCount);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trunk.put(Arrays.asList("userCount"), Arrays.asList(userCount));
 <<<<<<< HEAD
 >>>>>>> sjw
@@ -76,6 +88,10 @@ public class TxController {
 		map.put(Arrays.asList("userCount"), Arrays.asList(userCount));
 		return map.get();
 >>>>>>> hsc1
+=======
+		trunk.put(Arrays.asList("userCount"), Arrays.asList(userCount));
+		return trunk.get();
+>>>>>>> yyh
 	}
 	
 }

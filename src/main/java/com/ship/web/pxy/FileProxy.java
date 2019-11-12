@@ -3,6 +3,7 @@ package com.ship.web.pxy;
 public class FileProxy {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 
@@ -10,4 +11,7 @@ public class FileProxy {
 =======
 
 >>>>>>> hsc1
+=======
+
+>>>>>>> yyh
 }

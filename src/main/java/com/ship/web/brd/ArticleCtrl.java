@@ -24,12 +24,15 @@ import com.ship.web.pxy.PageProxy;
 import com.ship.web.pxy.Trunk;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> sjw
 =======
 >>>>>>> ljs
 =======
 >>>>>>> hsc1
+=======
+>>>>>>> yyh
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.PageProxy;
 import com.ship.web.pxy.Trunk;
@@ -43,6 +46,7 @@ public class ArticleCtrl {
 	@Autowired Printer printer;
 	@Autowired ArticleMapper articleMapper;
 	@Autowired Box<Article> box;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -64,6 +68,10 @@ public class ArticleCtrl {
 =======
 	@Autowired PageProxy pager;
 	@Autowired Trunk<Object> trunk;
+=======
+	@Qualifier PageProxy pager;
+	@Autowired Trunk<Object> trunk;
+>>>>>>> yyh
 	
 >>>>>>> ljs
 	@PostMapping("/")
@@ -76,6 +84,7 @@ public class ArticleCtrl {
 		System.out.println("\n"+param.getArtseq()+"       "+y.get());
 		ISupplier<String> s =()-> articleMapper.countArticle();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trunk.put(Arrays.asList("msg","count"),
 				Arrays.asList("SUCCESS",s.get()));
 		return trunk.get();
@@ -84,6 +93,11 @@ public class ArticleCtrl {
 				Arrays.asList("SUCCESS",s.get()));
 		return map.get();
 >>>>>>> hsc1
+=======
+		trunk.put(Arrays.asList("msg","count"),
+				Arrays.asList("SUCCESS",s.get()));
+		return trunk.get();
+>>>>>>> yyh
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -103,6 +117,7 @@ public class ArticleCtrl {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		box.clear();
 =======
 >>>>>>> sjw
@@ -119,6 +134,13 @@ public class ArticleCtrl {
 		map.put(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
 		return map.get();
 >>>>>>> hsc1
+=======
+		box.clear();
+		ISupplier<List<Article>> s = () -> articleMapper.selectList(pager);
+		printer.accept("해당 페이지\n"+s.get());
+		trunk.put(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
+		return trunk.get();
+>>>>>>> yyh
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -135,12 +157,17 @@ public class ArticleCtrl {
 		c.accept(param);
 		logger.info("수정2");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trunk.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return trunk.get();
 =======
 		map.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return map.get();
 >>>>>>> hsc1
+=======
+		trunk.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
+		return trunk.get();
+>>>>>>> yyh
 	} 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -157,12 +184,17 @@ public class ArticleCtrl {
 		c.accept(param);
 		logger.info("삭제2");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trunk.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return trunk.get();
 =======
 		map.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return map.get();
 >>>>>>> hsc1
+=======
+		trunk.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
+		return trunk.get();
+>>>>>>> yyh
 	} 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -177,6 +209,7 @@ public class ArticleCtrl {
 		logger.info("카운트");
 		ISupplier<String> s = () -> articleMapper.countArticle(); 
 		logger.info("카운트2/"+s.get());
+<<<<<<< HEAD
 <<<<<<< HEAD
 		trunk.put(Arrays.asList("count"), Arrays.asList(s.get()));
 		return trunk.get();
@@ -205,5 +238,13 @@ public class ArticleCtrl {
 	public void fileUpload() {
 		
 >>>>>>> hsc1
+=======
+		trunk.put(Arrays.asList("count"), Arrays.asList(s.get()));
+		return trunk.get();
+	}
+	@GetMapping("/fileupload")
+	public void fileUpload() {
+		
+>>>>>>> yyh
 	}
 }

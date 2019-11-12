@@ -147,16 +147,22 @@
 		
 		<dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${servlet-version}</version>
 			<scope>provided</scope>
 =======
+=======
+>>>>>>> yyh
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
 		    <version>${servlet-version}</version>
 		    <scope>provided</scope>
+<<<<<<< HEAD
 >>>>>>> ljs
+=======
+>>>>>>> yyh
 		</dependency>
 
 		<dependency>
@@ -176,9 +182,13 @@
     		<version>${lombok-version}</version>
     		<scope>provided</scope>
 		</dependency>
+<<<<<<< HEAD
 
 		
 		
+=======
+			
+>>>>>>> yyh
 		
 	<!-- Database -->
 		<dependency>

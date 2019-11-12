@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Qualifier;
 =======
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 =======
 import org.springframework.beans.factory.annotation.Qualifier;
 >>>>>>> hsc1
+=======
+import org.springframework.beans.factory.annotation.Qualifier;
+>>>>>>> yyh
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,12 +37,15 @@ public class TxService {
 <<<<<<< HEAD
 	@Autowired CrawlingProxy pxy;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	@Autowired CrawlingProxy crawler;
 >>>>>>> sjw
 =======
 	@Autowired CrawlingProxy crawler;
 >>>>>>> ljs
+=======
+>>>>>>> yyh
 	@Autowired UserProxy manager;
 	
 =======
@@ -57,6 +64,7 @@ public class TxService {
 		return userMapper.countUsers();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	}
 	public int trucateUsers() {
@@ -68,5 +76,7 @@ public class TxService {
 	public void truncateUsers() {
 		
 >>>>>>> hsc1
+=======
+>>>>>>> yyh
 	}
 }

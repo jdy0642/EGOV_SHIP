@@ -6,7 +6,10 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
-@Component @Data @Lazy
+
+@Component
+@Data
+@Lazy
 public class Box<T> {
 <<<<<<< HEAD
 	
@@ -34,6 +37,7 @@ public class Box<T> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> sjw
@@ -45,4 +49,7 @@ public class Box<T> {
 
 	////
 >>>>>>> hsc1
+=======
+
+>>>>>>> yyh
 }

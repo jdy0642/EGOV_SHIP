@@ -7,16 +7,20 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import com.ship.web.enums.Path;
 
+<<<<<<< HEAD
 public class WebContext extends AbstractAnnotationConfigDispatcherServletInitializer{
+=======
+public class WebContext extends AbstractAnnotationConfigDispatcherServletInitializer {
+>>>>>>> yyh
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {RootContext.class};
+		return new Class[] { RootContext.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {ServletContext.class};
+		return new Class[] { ServletContext.class };
 	}
 
 	@Override
@@ -48,6 +52,7 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
 		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
+<<<<<<< HEAD
 		MultipartConfigElement multipartConfig = new MultipartConfigElement(Path.UPLOAD_PATH.toString()
 				,20971520,41943040,20971520);
 =======
@@ -62,4 +67,10 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 	}
 =======
 >>>>>>> hsc1
+=======
+		MultipartConfigElement multipartConfig = new MultipartConfigElement(Path.UPLOAD_PATH.toString(), 20971520,
+				41943040, 20971520);
+		registration.setMultipartConfig(multipartConfig);
+	}
+>>>>>>> yyh
 }

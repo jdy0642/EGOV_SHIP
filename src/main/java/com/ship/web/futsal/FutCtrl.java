@@ -7,10 +7,14 @@ import java.util.function.Consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 =======
 import org.springframework.beans.factory.annotation.Qualifier;
 >>>>>>> ljs
+=======
+import org.springframework.beans.factory.annotation.Qualifier;
+>>>>>>> yyh
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,12 +24,15 @@ import com.ship.web.enums.SQL;
 import com.ship.web.pxy.Box;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> sjw
 =======
 >>>>>>> ljs
 =======
 >>>>>>> hsc1
+=======
+>>>>>>> yyh
 import com.ship.web.pxy.Trunk;
 
 @RestController
@@ -42,16 +49,21 @@ public class FutCtrl {
 	@Autowired Trunk<Object> map;
 >>>>>>> hsc1
 	@Autowired FutMapper futMapper;
+	@Autowired Trunk<Object> trunk;
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping("/create/Futtab")
 	public Map<?,?> createFutTab(){
 		HashMap<String, String> paramMap = new HashMap<>();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trunk.put(Arrays.asList("CREATEFUTTAB","msg")
 =======
 		map.put(Arrays.asList("CREATEFUTTAB","msg")
 >>>>>>> hsc1
+=======
+		trunk.put(Arrays.asList("CREATEFUTTAB","msg")
+>>>>>>> yyh
 				,Arrays.asList(SQL.CREATEFUTTAB.toString(),"Sucess"));
 		Consumer<Map<?, ?>> c = x-> futMapper.createFuttab(x);
 		c.accept(paramMap);

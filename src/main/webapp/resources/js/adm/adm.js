@@ -44,9 +44,14 @@ adm =(()=>{
 				[{txt:'고객관리',name:'cust_mgmt'},
 				{txt:'게시판관리',name:'brd_mgmt'},
 				{txt:'웹크롤링',name:'web_crawl'},
+<<<<<<< HEAD
 				{txt:'구장관리',name:'stad_mgmt'},
 				{txt:'수익구조',name:'data_graph'},
 				{txt:'커뮤니티',name:'comm_mgmt'}],
+=======
+				{txt:'커뮤니티',name:'comm_mgmt'},
+				{txt:'수익구조',name:'data_graph'}],
+>>>>>>> yyh
 			(i,j)=>{
 			$('<div name="'+j.name+'">'+j.txt+'</div>')
 			.css({border: '1px solid #ddd', margin: 'auto 0', 'line-height': '50px'})
@@ -64,7 +69,7 @@ adm =(()=>{
 					$('#right').empty()
 					brd_mgmt()
 					break;
-				case 'stad_mgmt':
+				case 'comm_mgmt':
 					$('#right').empty()
 					break;
 				case 'data_graph':
@@ -123,8 +128,13 @@ adm =(()=>{
 			}
 		})
 	}
+<<<<<<< HEAD
 	let brd_mgmt=()=>{
 		$(' <a>게시판 게시글 생성 </a>')
+=======
+	let comm_mgmt=()=>{
+		$(' <a> 커뮤니티 테이블 생성 </a>')
+>>>>>>> yyh
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
