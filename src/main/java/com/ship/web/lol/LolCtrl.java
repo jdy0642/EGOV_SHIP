@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ship.web.enums.SQL;
-import com.ship.web.usr.UserCtrl;
+import com.ship.web.pxy.Box;
+import com.ship.web.pxy.Trunk;
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -23,6 +24,8 @@ public class LolCtrl {
 	@Autowired Printer p;
 	@Autowired Map<String,Object> map;
 	@Autowired LolMapper lolMapper;
+	@Autowired Trunk<String> trunk;
+	@Autowired Box<String> box;
 	
 	
 	@GetMapping("/create/lol")

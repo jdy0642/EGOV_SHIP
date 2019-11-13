@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Post {
-	private String POST_NUM, POST_TITLE, POST_TEXT, IMG
-				, INTERLOCK, CATEGORY, USER_ID, NICKNAME;
+	private String postnum, posttitle, posttext, img
+				, interlock, category, userid, nickname;
 }

@@ -11,12 +11,12 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {RootContext.class};
+		return new Class[] { RootContext.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {ServletContext.class};
+		return new Class[] { ServletContext.class };
 	}
 
 	@Override
@@ -26,11 +26,9 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 	
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		// TODO Auto-generated method stub
-		registration.setInitParameter("thorwExceptionIfNoHandlerFound", "true");
-		MultipartConfigElement multipartConfig = new MultipartConfigElement(
-				Path.UPLOAD_PATH.toString(),20971520,41943040,20971520);
+		registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
+		MultipartConfigElement multipartConfig = new MultipartConfigElement
+				(Path.UPLOAD_PATH.toString(),20971520, 41943040, 20971520);
 		registration.setMultipartConfig(multipartConfig);
 	}
-
 }

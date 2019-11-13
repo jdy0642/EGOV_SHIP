@@ -1,7 +1,7 @@
 package com.ship.web.enums;
 
 public enum Path {
-	UPLOAD_PATH;
+	UPLOAD_PATH, CRAWLING_OPGG;
 	@Override
 	public String toString() {
 		String result = "";
@@ -9,8 +9,10 @@ public enum Path {
 		case UPLOAD_PATH:
 			result = "C:\\Users\\User\\git\\EGOV_SHIP\\src\\main\\webapp\\resources\\upload\\temp";
 			break;
-		
+		case CRAWLING_OPGG : 
+			result= "https://talk.op.gg/s/lol/free?page=";
+			break;
 		}
-		return result;
-	}
+        return result;
+    }
 }

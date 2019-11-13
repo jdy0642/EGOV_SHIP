@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @Lazy
 public class Income {
 
-	private String incomeday,incomestadium,stadiumid,resdate;
+	private String incomeday,incomestadium,stadiumid,incomedate;
 }

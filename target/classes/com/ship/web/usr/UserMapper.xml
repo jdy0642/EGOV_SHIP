@@ -18,21 +18,21 @@
 	</select>
 
     <select id="selectUserByIdPw" resultType="User" parameterType="User" >
-        SELECT USER_ID uid , USER_PW upw, USER_NAME uname
+        SELECT USERID uid , USERPW upw, USERNAME uname
         FROM USER 
-        WHERE USER_ID LIKE #{uid} AND USER_PW LIKE #{upw}
+        WHERE USERID LIKE #{uid} AND USERPW LIKE #{upw}
     </select>
     
     <insert id="insertUser" parameterType="User" >
-        INSERT INTO USER (USER_ID, USER_PW, USER_NAME) VALUES (
-            #{uid}, #{upw}, #{uname}
+        INSERT INTO USER (USERID, USERNAME, USERPW, USERTEL, USERPOINT, AGE, LOC, GENDER, EMAIL, BOOKMARK, LOLBLACK, FUTBLACK) VALUES (
+            #{uid}, #{upw}, #{uname}, #{tel}, #{upoint}, #{age}, #{loc}, #{gender}, #{email}, #{bookmark}, #{lolblack}, #{futblack}
         )
     </insert>
   
  	<select id="existId" resultType="Integer" parameterType="String" >
           SELECT COUNT(*)
 			FROM USER
-			WHERE USER_ID LIKE #{uid} 
+			WHERE USERID LIKE #{uid} 
     </select>
  	<select id="countUsers" resultType="Integer"  >
           SELECT COUNT(*)

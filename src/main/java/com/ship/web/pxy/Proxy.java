@@ -13,17 +13,24 @@ public class Proxy {
 		return f.apply(param);
 	}
 
-	public int random(int i, int o) {
-	    BiFunction<Integer,Integer,Integer> p = (a,b) ->(int)(Math.random()*(b-a))+a; 
-	      return p.apply(i, o);
-	   }
-	public boolean equals(String p1, String p2) {
-		  BiFunction<String, String, Boolean> f = String :: equals;
-		   return f.apply(p1, p2);
+	public boolean equals(String p1,String p2) {
+		BiFunction<String,String,Boolean> f = String :: equals;
+		return f.apply(p1,p2);
+	}
+
+	   public int random(int i, int o) {
+	      BiFunction<Integer,Integer,Integer> p = (a,b) ->(int)(Math.random()*(b-a))+a; 
+	    return p.apply(i, o);
 	   }
 	public int[] array(int size) {
 		Function<Integer, int[]> f = int[] :: new;
 		return f.apply(size);
 	}
+	public String string(Object param) {
+		Function<Object, String> f =  String :: valueOf;
+		return f.apply(param);
+	}
 	
+	
+
 }

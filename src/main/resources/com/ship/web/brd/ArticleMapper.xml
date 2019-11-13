@@ -5,17 +5,15 @@
 <mapper namespace="com.ship.web.brd.ArticleMapper">
     
     <insert id="insertArticle" parameterType="Article" >
-        INSERT INTO ARTICLE (USER_ID, TITLE, CONTENT) VALUES (
-             #{uid}, #{title}, #{content}
-        )
+        INSERT INTO ARTICLE (TITLE, CONTENT, USERID, COMMENTS, FILE) VALUES (
+              #{title}, #{content}, #{userid}, #{comments}, #{file})
     </insert>
-    
     <select id="countArticle" resultType="string">
     		SELECT COUNT(ARTSEQ) FROM ARTICLE 
     </select>
     
     <select id="selectList" resultType="Article" parameterType="Proxy">
-    SELECT BOARD_TYPE AS boardtype, USER_ID AS uid, A.* FROM
+    SELECT USERID AS uid, A.* FROM
 				(SELECT *
 				 FROM ARTICLE
 	 			 ORDER BY ARTSEQ DESC) A
@@ -31,4 +29,5 @@
 			SET CONTENT = #{content}, TITLE = #{title}
 			WHERE ARTSEQ = #{artseq}
   	</update>
+  	
 </mapper>

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ship.web.enums.SQL;
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.Trunk;
@@ -20,7 +19,6 @@ import com.ship.web.pxy.Trunk;
 public class FutCtrl {
 	@Autowired Trunk<Object> trunk;
 	@Autowired Box<Object> box;
-	
 	@Autowired FutMapper futMapper;
 	
 	@SuppressWarnings("unchecked")
