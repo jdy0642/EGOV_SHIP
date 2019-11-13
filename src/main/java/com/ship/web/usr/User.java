@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class User {
-
+//
 	private String uid, upw, uname, age, gender, loc, tel, email, 
 		upoint, score,win, hitmap, km, heart, author, lolname;
 }
