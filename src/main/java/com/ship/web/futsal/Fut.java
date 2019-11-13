@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Fut {
-	private String NICKNAME, USER_ID, SCORE, MVP, WIN, HITMAP, KM
-					, HEART, FUT_BLACK, REPORT_NUM;
+	private String nickname, userid, score, mvp, win, hitmap, km
+					, heart, futblack, reportnum;
 }

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import com.ship.web.enums.Path;
 
-public class WebContext extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class WebContext extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -23,12 +23,12 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
-
+	
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
-		MultipartConfigElement multipartConfig = new MultipartConfigElement(Path.UPLOAD_PATH.toString(), 20971520,
-				41943040, 20971520);
+		registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
+		MultipartConfigElement multipartConfig = new MultipartConfigElement
+				(Path.UPLOAD_PATH.toString(),20971520, 41943040, 20971520);
 		registration.setMultipartConfig(multipartConfig);
 	}
 }

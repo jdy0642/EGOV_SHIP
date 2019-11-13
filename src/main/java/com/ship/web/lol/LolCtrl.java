@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ship.web.enums.SQL;
-import com.ship.web.usr.UserCtrl;
 import com.ship.web.utl.Printer;
 
 @RestController

@@ -1,11 +1,14 @@
 package com.ship.web.brd;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +17,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ship.web.cmm.IConsumer;
 import com.ship.web.cmm.ISupplier;
+import com.ship.web.enums.Path;
 import com.ship.web.pxy.PageProxy;
 import com.ship.web.pxy.Trunk;
 import com.ship.web.pxy.Box;
@@ -30,21 +35,22 @@ public class ArticleCtrl {
 	@Autowired Printer printer;
 	@Autowired ArticleMapper articleMapper;
 	@Autowired Box<Article> box;
-	@Qualifier PageProxy pager;
 	@Autowired Trunk<Object> trunk;
+	@Autowired PageProxy pager;
 	
-	@SuppressWarnings("unchecked")
 	@PostMapping("/")
 	public Map<?,?> write(@RequestBody Article param) {
 		logger.info("롸이트");
 		IConsumer<Article> c = t -> articleMapper.insertArticle(param);
+		Supplier<Integer> y = () -> articleMapper.artseqMax();
+		param.setArtseq(String.format("%d",y.get()+1));
 		c.accept(param);
+		System.out.println("\n"+param.getArtseq()+"       "+y.get());
 		ISupplier<String> s =()-> articleMapper.countArticle();
 		trunk.put(Arrays.asList("msg","count"),
 				Arrays.asList("SUCCESS",s.get()));
 		return trunk.get();
 	}
-	@SuppressWarnings("unchecked")
 	@GetMapping("/page/{pageno}/size/{pageSize}")
 	public Map<?,?>  list(@PathVariable String pageno,
 			@PathVariable String pageSize){
@@ -58,7 +64,7 @@ public class ArticleCtrl {
 		trunk.put(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
 		return trunk.get();
 	}
-	@SuppressWarnings("unchecked")
+
 	@PutMapping("/{artseq}")
 	public Map<?,?> updateArticle(@PathVariable String artseq, @RequestBody Article param) {
 		logger.info("수정"+param);
@@ -68,7 +74,6 @@ public class ArticleCtrl {
 		trunk.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return trunk.get();
 	} 
-	@SuppressWarnings("unchecked")
 	@DeleteMapping("/{artseq}")
 	public Map<?,?> deleteArticle(@PathVariable String artseq, @RequestBody Article param) {
 		logger.info("삭제");
@@ -78,7 +83,6 @@ public class ArticleCtrl {
 		trunk.put(Arrays.asList("msg"), Arrays.asList("SUCCESS"));
 		return trunk.get();
 	} 
-	@SuppressWarnings("unchecked")
 	@GetMapping("/count")
 	public Map<?,?> count() {
 		logger.info("카운트");
@@ -87,8 +91,20 @@ public class ArticleCtrl {
 		trunk.put(Arrays.asList("count"), Arrays.asList(s.get()));
 		return trunk.get();
 	}
-	@GetMapping("/fileupload")
-	public void fileUpload() {
-		
+	@PostMapping("/fileupload")
+	public void fileupload(MultipartFile[] uploadFile) {
+		printer.accept("파일 업로드");
+		String uploadFolder = Path.UPLOAD_PATH.toString();
+		for(MultipartFile f : uploadFile) {
+			String fname = f.getOriginalFilename();
+			fname = fname.substring(fname.lastIndexOf("\\")+1);
+			File saveFile = new File(uploadFolder, fname);
+			try {
+				f.transferTo(saveFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
+	
 }

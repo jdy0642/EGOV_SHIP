@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ship.web.enums.SQL;
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.Trunk;
@@ -18,10 +17,11 @@ import com.ship.web.pxy.Trunk;
 @RestController
 @RequestMapping("/fut")
 public class FutCtrl {
-	@Autowired Box map;
-	@Autowired FutMapper futMapper;
 	@Autowired Trunk<Object> trunk;
+	@Autowired Box<Object> box;
+	@Autowired FutMapper futMapper;
 	
+	@SuppressWarnings("unchecked")
 	@GetMapping("/create/Futtab")
 	public Map<?,?> createFutTab(){
 		HashMap<String, String> paramMap = new HashMap<>();

@@ -104,6 +104,8 @@ auth = (()=>{
 				text : "로그인",
 				click : e=>{
 					e.preventDefault();
+					$('#uid').val('a')
+					$('#upw').val('1')
 					let data ={uid : $('#uid').val(),
 							   upw : $('#upw').val()
 							}
@@ -115,8 +117,8 @@ auth = (()=>{
 						contentType : 'application/json',
 						success : d =>{
 						$.when(
-							setCookie("USER_ID",d.uid),
-							alert('저장된 쿠키'+getCookie("USER_ID"))
+							setCookie("USERID",d.uid),
+							alert('저장된 쿠키'+getCookie("USERID"))
 						).done(()=>{
 							brd.onCreate()
 							}).fail(()=>{

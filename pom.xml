@@ -144,12 +144,14 @@
 		</dependency>
 				
 		<!-- Servlet -->
+		
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>${servlet-version}</version>
-		    <scope>provided</scope>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-version}</version>
+			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -167,8 +169,7 @@
     		<version>${lombok-version}</version>
     		<scope>provided</scope>
 		</dependency>
-			
-		
+
 	<!-- Database -->
 		<dependency>
     		<groupId>com.zaxxer</groupId>
@@ -211,7 +212,7 @@
           <groupId>org.mariadb.jdbc</groupId>
           <artifactId>mariadb-java-client</artifactId>
           <version>${mariadb-version}</version>
-     	 </dependency>
+        </dependency>
 		
 		<!-- Test -->
 		<dependency>
