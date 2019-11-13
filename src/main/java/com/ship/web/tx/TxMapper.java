@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ship.web.brd.Article;
 import com.ship.web.usr.User;
 
 import com.ship.web.usr.User;
@@ -22,6 +23,7 @@ public interface TxMapper {
             + "#{tel},#{age},#{gender},#{email},#{upoint},#{score},#{mvp}, #{win}, "
             + "#{hitmap}, #{km}, #{heart}, #{author}, #{lolname})")
 	public void insertUser(User u);
+	
 	
 		
 }

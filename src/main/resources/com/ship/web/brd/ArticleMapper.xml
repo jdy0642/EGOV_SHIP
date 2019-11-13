@@ -13,7 +13,7 @@
     </select>
     
     <select id="selectList" resultType="Article" parameterType="Proxy">
-    SELECT BOARD_TYPE AS boardtype, USERID AS uid, A.* FROM
+    SELECT USERID AS uid, A.* FROM
 				(SELECT *
 				 FROM ARTICLE
 	 			 ORDER BY ARTSEQ DESC) A

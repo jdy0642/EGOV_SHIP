@@ -1,6 +1,5 @@
 package com.ship.web.pxy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
@@ -36,9 +35,9 @@ public class ArticleProxy extends Proxy{
 		}
 		return buffer.toString();
 	}
-	private String makeContent() {
+	private Box<String> makeContent() {
 		trunk.put(Arrays.asList("site","srch"), Arrays.asList("직접입력","인기글"));
-		return crawl.choose(trunk.get()).get(0);
+		return crawl.choose(trunk.get());
 	}
 	
 	private String makeFile() {
@@ -55,12 +54,11 @@ public class ArticleProxy extends Proxy{
 	}
 	@Transactional
 	public void insertArticle() {
-		for(int i=0; i< 500; i++) {
-			articleMapper.insertArticle(makeArticle());
+		Box<String> box = makeContent();
+		for(int i=0; i< 200; i++) {
+			Collections.shuffle(box.get());
+			articleMapper.insertArticle(new Article(null,makeTitle(),box.get(0), makeUserid(), makeComments(), makePageno(), makeFile()));
 		}
 	}
-	public Article makeArticle() {
-	      return new Article(null,makeTitle(),makeContent(), makeUserid(), makeComments(), makePageno(), makeFile());
-	   }
 
 }
