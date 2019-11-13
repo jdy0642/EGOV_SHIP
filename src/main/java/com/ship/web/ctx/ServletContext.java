@@ -1,18 +1,6 @@
 package com.ship.web.ctx;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import javax.servlet.MultipartConfigElement;
 
-=======
->>>>>>> sjw
-=======
->>>>>>> ljs
-=======
->>>>>>> hsc1
-=======
->>>>>>> yyh
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.multipart.MultipartResolver;
@@ -40,36 +28,9 @@ public class ServletContext implements WebMvcConfigurer {
 		registry.addResourceHandler("/resources/**")
 		.addResourceLocations("/resources/");
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	@Bean
 	public MultipartResolver multipartResolver() {
 		StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
-=======
-	
-	@Bean
-	public MultipartResolver multipartResolver() {
-		StandardServletMultipartResolver resolver
-			= new StandardServletMultipartResolver();
->>>>>>> sjw
-=======
-	
-	@Bean
-	public MultipartResolver multipartResolver() {
-		StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
->>>>>>> ljs
-=======
-	@Bean
-	public MultipartResolver multipartResolver() {
-		StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
->>>>>>> hsc1
-=======
-	@Bean
-	public MultipartResolver multipartResolver() {
-		StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
->>>>>>> yyh
 		return resolver;
 	}
 }

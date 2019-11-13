@@ -8,13 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ship.web.brd.Article;
 import com.ship.web.brd.ArticleMapper;
+import com.ship.web.usr.UserMapper;
 
-@Component("article")
+@Component("art")
 public class ArticleProxy extends Proxy{
 	@Autowired ArticleMapper articleMapper;
+	@Autowired UserMapper userMapper;
 	
 	private String makeArtseq() {
-		
 		return null;
 	}
 	private String makeTitle() {
@@ -57,12 +58,11 @@ public class ArticleProxy extends Proxy{
 	@Transactional
 	public void insertArticle() {
 		for(int i=0; i< 500; i++) {
-			
 			articleMapper.insertArticle(makeArticle());
 		}
 	}
 	public Article makeArticle() {
-	      return new Article(makeArtseq(),makeTitle(),makeContent(), makeFile(), makeUserid(), makeComments(), makePageno());
+	      return new Article(null,makeTitle(),makeContent(), makeUserid(), makeComments(), makePageno(), makeFile());
 	   }
 
 }

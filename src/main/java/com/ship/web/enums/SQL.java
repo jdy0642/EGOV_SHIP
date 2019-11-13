@@ -13,7 +13,7 @@ public enum SQL {
 					" USERID VARCHAR(10) PRIMARY KEY," + 
 					" USERNAME VARCHAR(20)," + 
 					" USERPW VARCHAR(20)," + 
-					" USERTEL INT(15)," + 
+					" USERTEL VARCHAR(15)," + 
 					" USERPOINT VARCHAR(10)," + 
 					" AGE VARCHAR(5)," + 
 					" LOC VARCHAR(10)," + 
@@ -28,46 +28,29 @@ public enum SQL {
 		case CREATEFUTTAB:
 			result = "CREATE TABLE FUTSAL (" + 
 					"NICKNAME VARCHAR(10) PRIMARY KEY," + 
-<<<<<<< HEAD
 					"SCORE VARCHAR(10)," + 
-=======
 					"USERID VARCHAR(20)," + 
 					"SCORE VARCHAR(10)," +  
->>>>>>> sjw
 					"WIN VARCHAR(20)," + 
 					"HITMAP VARCHAR(20)," + 
 					"KM VARCHAR(20)," + 
 					"HEART VARCHAR(100)," + 
 					"FUTBLACK VARCHAR(20)," + 
-<<<<<<< HEAD
-					"USERID VARCHAR(20), FOREIGN KEY (USERID) REFERENCES USER (USERID)" +
-=======
-					"ROPORTNUM VARCHAR(100)" + 
->>>>>>> sjw
+					"REPORTNUM VARCHAR(100)," + 
+					"USERID VARCHAR(10), FOREIGN KEY (USERID) REFERENCES USER (USERID)" +
 					")";
 			break;
 			
 		case CREATEPOSTTAB:
-<<<<<<< HEAD
 			result = "CREATE TABLE ARTICLE (" + 
 					"ARTSEQ INT AUTO_INCREMENT PRIMARY KEY," + 
 					"TITLE VARCHAR(30)," + 
 					"CONTENT VARCHAR(30)," + 
-					"USERID VARCHAR(30)," + 
+					"USERID VARCHAR(10)," + 
 					"COMMENTS VARCHAR(30)," + 
 					"PAGENO VARCHAR(30)," + 
-					"FILE VARCHAR(30)," + 
-=======
-			result = "CREATE TABLE POST (" + 
-					"POSTNUM VARCHAR(30) INT AUTO_INCREMENT PRIMARY KEY," + 
-					"POSTTITLE VARCHAR(30)," + 
-					"POSTTEXT VARCHAR(30)," + 
-					"IMG VARCHAR(30)," + 
-					"INTERLOCK VARCHAR(30)," + 
-					"CATEGORY VARCHAR(30)," + 
-					"USERID VARCHAR(30)," + 
-					"NICKNAME VARCHAR(10), FOREIGN KEY (NICKNAME) REFERENCES FUTSAL (NICKNAME)" + 
->>>>>>> sjw
+					"FILE VARCHAR(30)," +
+					"FOREIGN KEY (USERID) REFERENCES USER (USERID)"+
 					")";
 			break;
 			
@@ -131,11 +114,7 @@ public enum SQL {
 			
 		case CREATE_ADMIN:
 			result = "CREATE TABLE ADMIN(\n" + 
-<<<<<<< HEAD
-					"   ADMINID VARCHAR(30) PRIMARY KEY,\n" + 
-=======
 					"	ADMINID VARCHAR(30) PRIMARY KEY,\n" + 
->>>>>>> hsc1
 					"    ADMINPW VARCHAR(30),\n" + 
 					"    ADMINNAME VARCHAR(30),\n" + 
 					"    ADMINTEL VARCHAR(30),\n" + 

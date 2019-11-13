@@ -120,7 +120,7 @@ brd = (()=>{
 	let write=()=>{
 		alert('라이트_'+_)
 		$('#recent_updates').html(brd_vue.brd_write())
-		$('#write_form input[name="writer"]').val(getCookie("USER_ID"))
+		$('#write_form input[name="writer"]').val(getCookie("USERID"))
 		$('#suggestions').remove()
 		$('<input>',{
 			style:"float:right;width:100px;margin-right:10px",

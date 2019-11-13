@@ -12,10 +12,6 @@ import lombok.NoArgsConstructor;
 @Lazy
 public class User {
 
-	private String uid, upw, uname, age, gender, loc, tel, email, 
-<<<<<<< HEAD
-		upoint, score,  win, hitmap, km, heart, author, lolname;
-=======
-		upoint, score,win, hitmap, km, heart, author, lolname;
->>>>>>> yyh
+	private String uid, uname, upw, tel, upoint, age, loc, gender,
+		email, bookmark, lolblack, futblack;
 }
