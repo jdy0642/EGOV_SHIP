@@ -91,15 +91,16 @@ adm =(()=>{
             '<form id="crawl_form">'+
             '  <select name="site" id="right2" size="1" >'+
             '  </select><br><br>'+
-               '<input class="form-control mr-sm-2" type="text" placeholder="insert URL for crawling" aria-label="Search">'+
+               '<input class="form-control mr-sm-2" type="text" value="인기글" placeholder="insert URL for crawling" aria-label="Search">'+
             '</form>'
          ).appendTo('#right')
          $('#crawl_form input[class="form-control mr-sm-2"]')
       .css({width:'80%'})
       $.each(
-            [{sub:'naver.com'},
+            [{sub:'직접입력'},
+            {sub:'naver.com'},
             {sub:'google.co.kr'},
-            {sub:'daum.net'}],
+            {sub:'op.gg'}],
             (i,j)=>{
          $('<option value="'+j.sub+'">'+j.sub+'</option>')
          .appendTo('#crawl_form select')
@@ -112,7 +113,7 @@ adm =(()=>{
                   $('#crawl_form input[type="text"]').val()]
          if(!$.fn.nullchecker(arr)){
          $.getJSON(_+'/tx/crawling/'+arr[0]+'/'+arr[1],d=>{
-            alert('크롤링')
+            alert('크롤링 성공')
          })
          }
       })
@@ -223,17 +224,10 @@ adm =(()=>{
             alert('일괄 등록된 유저의 수: '+d.msg)
          })
       })
-      $('</br></br><a>POST 더미 대량 입력</a>')
-      .appendTo('#right')
-      .click(e=>{
-    	  e.preventDefault()
-    	  $.getJSON(_+'/tx/register/articles',d=>{
-    		  alert('일괄 등록된 유저의 수: '+d.msg)
-    	  })
-      })
+      
    }
    let brd_mgmt =()=>{
-      $('<a>커뮤니티 테이블 생성<br/></a>')
+      $('</br></br><a>ARTICLE 테이블 생성<br/></a>')
       .appendTo('#right')
       .click(e=>{
          e.preventDefault()
@@ -241,6 +235,16 @@ adm =(()=>{
             alert('report테이블 생성'+d.msg)
          })
       })
+      
+      $('</br></br><a>ARTICLE 더미 대량 입력</a>')
+      .appendTo('#right')
+      .click(e=>{
+    	  e.preventDefault()
+    	  $.getJSON(_+'/tx/register/articles',d=>{
+    		  alert('게시판 글 수: '+d.articleCount)
+    	  })
+      })
+      
    }
    return{onCreate}
 })()

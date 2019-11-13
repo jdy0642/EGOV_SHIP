@@ -12,6 +12,10 @@ public class Proxy {
 		IFunction<String,Integer> f = Integer :: parseInt;
 		return f.apply(param);
 	}
+	public String string(Object param) {
+		IFunction<Object,String> f = String :: valueOf;
+		return f.apply(param);
+	}
 
 	public boolean equals(String p1,String p2) {
 		BiFunction<String,String,Boolean> f = String :: equals;

@@ -1,5 +1,8 @@
 package com.ship.web.pxy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,9 @@ import com.ship.web.usr.UserMapper;
 public class ArticleProxy extends Proxy{
 	@Autowired ArticleMapper articleMapper;
 	@Autowired UserMapper userMapper;
+	@Autowired CrawlingProxy crawl;
+	@Autowired Trunk<String> trunk;
+	@Autowired Box<String> box;
 	
 	private String makeArtseq() {
 		return null;
@@ -31,16 +37,8 @@ public class ArticleProxy extends Proxy{
 		return buffer.toString();
 	}
 	private String makeContent() {
-		StringBuffer buffer = new StringBuffer();
-		Random ran = new Random();
-
-		String content[] = 
-				"a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,1,2,3,4,5,6,7,8,9".split(",");
-		
-		for (int i = 0 ; i < 5; i++) {
-			buffer.append(content[ran.nextInt(content.length)]);
-		}
-		return buffer.toString();
+		trunk.put(Arrays.asList("site","srch"), Arrays.asList("직접입력","인기글"));
+		return crawl.choose(trunk.get()).get(0);
 	}
 	
 	private String makeFile() {

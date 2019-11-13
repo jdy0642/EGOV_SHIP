@@ -1,4 +1,4 @@
-package com.ship.web.aop;
+package com.ship.web.tx;
 
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;

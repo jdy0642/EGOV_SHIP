@@ -6,7 +6,8 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import com.ship.web.aop.TxMapper;
+
+import com.ship.web.tx.TxMapper;
 import com.ship.web.usr.User;
 import com.ship.web.usr.UserMapper;
 
