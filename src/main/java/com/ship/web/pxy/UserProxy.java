@@ -130,7 +130,7 @@ public class UserProxy extends Proxy{
 		}
 		
 		 private String makeLoc() {
-			   	List<String> loc = Arrays.asList("서울, 경기, 충청");
+			   	List<String> loc = Arrays.asList("서울","경기","충청");
 			   	Collections.shuffle(loc);
 				return loc.get(0);
 			}

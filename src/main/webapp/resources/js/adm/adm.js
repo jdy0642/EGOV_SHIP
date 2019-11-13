@@ -48,8 +48,8 @@ adm =(()=>{
             [{txt:'고객관리',name:'cust_mgmt'},
             {txt:'구장등록',name:'stad_reg'},
             {txt:'웹크롤링',name:'web_crawl'},
-            {txt:'구장관리',name:'stad_mgmt'},
-            {txt:'수익구조',name:'data_graph'},
+            {txt:'어드민관리',name:'adm_mgmt'},
+            {txt:'풋살관리',name:'fut_mgmt'},
             {txt:'게시판관리',name:'brd_mgmt'}],
          (i,j)=>{
          $('<div name="'+j.name+'">'+j.txt+'</div>')
@@ -67,11 +67,13 @@ adm =(()=>{
             case 'stad_reg':
                $('#right').empty()
                break;
-            case 'stad_mgmt':
+            case 'adm_mgmt':
                $('#right').empty()
+               adm_mgmt()
                break;
-            case 'data_graph':
+            case 'fut_mgmt':
                $('#right').empty()
+               fut_mgmt()
                break;
             case 'web_crawl':
                $('#right').empty()
@@ -84,6 +86,44 @@ adm =(()=>{
             }
          })
       })
+   }
+   let fut_mgmt=()=>{
+	   $('</br><a> FUTSAL 테이블 생성</a>')
+	     .appendTo('#right')
+	     .click(e=>{
+	        e.preventDefault()
+	        $.getJSON(_+'/fut/create/FutTab',d=>{
+	           alert("풋살테이블"+ d.msg)
+	        })
+	     })
+
+	$('</br><a> FUTSAL 더미 생성</a>')
+	     .appendTo('#right')
+	     .click(e=>{
+	        e.preventDefault()
+	        $.getJSON(_+'/fut/create/FutDummy',d=>{
+	           alert("풋살더미"+ d.msg)
+	        })
+	     })
+   }
+   let adm_mgmt=()=>{
+	   $('</br></br><a>ADMIN 테이블 생성</a>')
+	      .appendTo('#right')
+	      .click(e=>{
+	         e.preventDefault()
+	            $.getJSON(_+'/admins/create/table',d=>{
+	         alert('관리자 테이블 생성: '+d.msg)
+	         })
+	      })
+	      
+	   $('</br></br><a>ADMIN 더미 대량 입력</a>')
+	      .appendTo('#right')
+	      .click(e=>{
+	    	  e.preventDefault()
+	    	  $.getJSON(_+'/tx/register/admins',d=>{
+	    		  alert('게시판 글 수: '+d.adminCount)
+	    	  })
+	      })
    }
    let webCrawl=()=>{
          
@@ -190,14 +230,7 @@ adm =(()=>{
          })
       })
       
-      $('</br></br><a>ADMIN 테이블 생성</a>')
-      .appendTo('#right')
-      .click(e=>{
-         e.preventDefault()
-            $.getJSON(_+'/admins/create/table',d=>{
-         alert('관리자 테이블 생성: '+d.msg)
-         })
-      })
+     
       
       $('</br></br><a>INCOME 테이블 생성</a>')
       .appendTo('#right')
@@ -221,7 +254,7 @@ adm =(()=>{
       .click(e=>{
          e.preventDefault()
          $.getJSON(_+'/tx/register/users',d=>{
-            alert('일괄 등록된 유저의 수: '+d.msg)
+            alert('일괄 등록된 유저의 수: '+d.userCount)
          })
       })
       

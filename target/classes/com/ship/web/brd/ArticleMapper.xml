@@ -5,8 +5,8 @@
 <mapper namespace="com.ship.web.brd.ArticleMapper">
     
     <insert id="insertArticle" parameterType="Article" >
-        INSERT INTO ARTICLE (TITLE, CONTENT, USERID, COMMENTS, PAGENO, FILE) VALUES (
-              #{title}, #{content}, #{userid}, #{comments}, #{pageno}, #{file})
+        INSERT INTO ARTICLE (TITLE, CONTENT, USERID, COMMENTS, FILE) VALUES (
+              #{title}, #{content}, #{userid}, #{comments}, #{file})
     </insert>
     <select id="countArticle" resultType="string">
     		SELECT COUNT(ARTSEQ) FROM ARTICLE 

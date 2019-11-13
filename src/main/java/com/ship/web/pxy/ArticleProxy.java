@@ -49,15 +49,12 @@ public class ArticleProxy extends Proxy{
 	private String makeComments() {
 		return null;
 	}
-	private String makePageno() {
-		return null;
-	}
 	@Transactional
 	public void insertArticle() {
 		Box<String> box = makeContent();
 		for(int i=0; i< 200; i++) {
 			Collections.shuffle(box.get());
-			articleMapper.insertArticle(new Article(null,makeTitle(),box.get(0), makeUserid(), makeComments(), makePageno(), makeFile()));
+			articleMapper.insertArticle(new Article(null,makeTitle(),box.get(0), makeUserid(), makeComments(), makeFile()));
 		}
 	}
 

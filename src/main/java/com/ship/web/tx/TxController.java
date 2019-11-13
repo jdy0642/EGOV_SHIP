@@ -51,4 +51,12 @@ public class TxController {
 		return trunk.get();
 	}
 	
+	@GetMapping("/register/admins")
+	public Map<?,?> registerAdmins(){
+		int adminCount =  txService.registerAdmins();
+		p.accept("어드민 카운팅: "+adminCount);
+		trunk.put(Arrays.asList("adminCount"), Arrays.asList(crawler.string(adminCount)));
+		return trunk.get();
+	}
+	
 }

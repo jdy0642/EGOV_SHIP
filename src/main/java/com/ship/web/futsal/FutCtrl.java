@@ -21,25 +21,18 @@ public class FutCtrl {
 	@Autowired Box<Object> box;
 	@Autowired FutMapper futMapper;
 	
-	@SuppressWarnings("unchecked")
 	@GetMapping("/create/Futtab")
 	public Map<?,?> createFutTab(){
-		HashMap<String, String> paramMap = new HashMap<>();
 		trunk.put(Arrays.asList("CREATEFUTTAB","msg")
-				,Arrays.asList(SQL.CREATEFUTTAB.toString(),"Sucess"));
+				,Arrays.asList(SQL.CREATEFUTTAB.toString(),"SUCCESS"));
 		Consumer<Map<?, ?>> c = x-> futMapper.createFuttab(x);
-		c.accept(paramMap);
 		return trunk.get();
 	}
 	@GetMapping("/create/Posttab")
 	public Map<?,?> createPostTab(){
-		HashMap<String, String> paramMap = new HashMap<>();
-		//logger.info("Create table {}",SQL.CREATEFUTTAB.toString());
-		paramMap.put("CREATEPOSTTAB", SQL.CREATEPOSTTAB.toString());
+		trunk.put(Arrays.asList("CREATEFUTTAB","msg")
+				,Arrays.asList(SQL.CREATEPOSTTAB.toString(),"SUCCESS"));
 		Consumer<Map<?, ?>> c = x-> futMapper.createPosttab(x);
-		c.accept(paramMap);
-		paramMap.clear();
-		paramMap.put("msg","Sucess");
-		return paramMap;
+		return trunk.get();
 	}
 }

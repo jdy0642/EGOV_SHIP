@@ -46,11 +46,9 @@ public enum SQL {
 					"ARTSEQ INT AUTO_INCREMENT PRIMARY KEY," + 
 					"TITLE VARCHAR(30)," + 
 					"CONTENT VARCHAR(30)," + 
-					"USERID VARCHAR(10)," + 
 					"COMMENTS VARCHAR(30)," + 
-					"PAGENO VARCHAR(30)," + 
 					"FILE VARCHAR(30)," +
-					"FOREIGN KEY (USERID) REFERENCES USER (USERID)"+
+					"USERID VARCHAR(10) REFERENCES USER" + 
 					")";
 			break;
 			

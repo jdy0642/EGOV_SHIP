@@ -1,4 +1,6 @@
 package com.ship.web.brd;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ship.web.cmm.IConsumer;
 import com.ship.web.cmm.ISupplier;
+import com.ship.web.enums.Path;
 import com.ship.web.pxy.PageProxy;
 import com.ship.web.pxy.Trunk;
 import com.ship.web.pxy.Box;
@@ -28,7 +32,7 @@ import com.ship.web.utl.Printer;
 public class ArticleCtrl {
 	private static final Logger logger = LoggerFactory.getLogger(ArticleCtrl.class);
 	@Autowired Article article;
-	@Autowired Printer printer;
+	@Autowired Printer p;
 	@Autowired ArticleMapper articleMapper;
 	@Autowired Box<Article> box;
 	@Autowired Trunk<Object> trunk;
@@ -38,10 +42,7 @@ public class ArticleCtrl {
 	public Map<?,?> write(@RequestBody Article param) {
 		logger.info("롸이트");
 		IConsumer<Article> c = t -> articleMapper.insertArticle(param);
-		Supplier<Integer> y = () -> articleMapper.artseqMax();
-		param.setArtseq(String.format("%d",y.get()+1));
 		c.accept(param);
-		System.out.println("\n"+param.getArtseq()+"       "+y.get());
 		ISupplier<String> s =()-> articleMapper.countArticle();
 		trunk.put(Arrays.asList("msg","count"),
 				Arrays.asList("SUCCESS",s.get()));
@@ -56,7 +57,7 @@ public class ArticleCtrl {
 		pager.paging();
 		box.clear();
 		ISupplier<List<Article>> s = () -> articleMapper.selectList(pager);
-		printer.accept("해당 페이지\n"+s.get());
+		p.accept("해당 페이지\n"+s.get());
 		trunk.put(Arrays.asList("articles", "pxy"), Arrays.asList(s.get(),pager));
 		return trunk.get();
 	}
@@ -86,6 +87,21 @@ public class ArticleCtrl {
 		logger.info("카운트2/"+s.get());
 		trunk.put(Arrays.asList("count"), Arrays.asList(s.get()));
 		return trunk.get();
+	}
+	@PostMapping("/fileupload")
+	public void fileupload(MultipartFile[] uploadFile) {
+		p.accept("아티클 컨트롤러까지");
+		String uploadFolder = Path.UPLOAD_PATH.toString();
+		for(MultipartFile f : uploadFile) {
+			String fname = f.getOriginalFilename();
+			fname = fname.substring(fname.lastIndexOf("\\")+1);
+			File saveFile = new File(uploadFolder, fname);
+			try {
+				f.transferTo(saveFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }
