@@ -207,6 +207,7 @@
     		<artifactId>jackson-annotations</artifactId>
     		<version>${jackson-version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
 		
 		   <dependency>
           <groupId>org.mariadb.jdbc</groupId>
@@ -233,6 +234,13 @@
     		<artifactId>jsoup</artifactId>
     		<version>${jsoup-version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+		<dependency>
+		    <groupId>net.coobird</groupId>
+		    <artifactId>thumbnailator</artifactId>
+		    <version>0.4.8</version>
+		</dependency>
+		
 		        
 	</dependencies>
     <build>

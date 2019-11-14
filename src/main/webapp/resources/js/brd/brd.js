@@ -146,20 +146,24 @@ brd = (()=>{
 			for(;i<inputFile.length;i++){
 				formData.append("uploadFile", inputFile[i])
 			}
-			$.ajax({
-				url: _+'/articles/fileupload',
-				processData: false,
-				contentType: false,
-				data: formData,
-				type: 'POST',
-				success: d=>{
-					alert('파일 업로드 성공')
-				},
-				error: e =>{
-					alert('파일 업로드 실패')
-				}
-			})
-			alert(inputFile)
+			/*	if(new CheckExtension({fname:inputFile[i].name,
+					fsize:inputFile[i].size})){
+					return false*/
+					$.ajax({
+						url: _+'/articles/fileupload',
+						processData: false,
+						contentType: false,
+						data: formData,
+						type: 'POST',
+						success: d=>{
+							alert('파일 업로드 성공')
+						},
+						error: e =>{
+							alert('파일 업로드 실패')
+						}
+					})
+				
+			
 		})
 		
 		$('<input>',{
