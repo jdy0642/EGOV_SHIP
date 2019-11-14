@@ -137,7 +137,8 @@ brd = (()=>{
 		})
 		.addClass('btn btn-warning')
 		.appendTo('#write_form')
-		.click(()=>{
+		.click(e=>{
+			e.preventDefault()
 			alert('파일업로드')
 			let formData = new FormData()
 			let inputFile = $('#upload')[0].files
