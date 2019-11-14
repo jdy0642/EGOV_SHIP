@@ -1,13 +1,19 @@
 package com.ship.web.pxy;
 
 import java.util.ArrayList;
-
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
 @Component
+@Data
+@Lazy
 public class Box<T> {
+
 	private ArrayList<T> list;
+	public Box(){list = new ArrayList<T>();}
 	public void add(T item) {
-		list = new ArrayList<T>();
 		list.add(item);
 	}
 	public T get(int i) {return list.get(i);}

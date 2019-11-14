@@ -117,8 +117,8 @@ auth = (()=>{
 						contentType : 'application/json',
 						success : d =>{
 						$.when(
-							setCookie("USER_ID",d.uid),
-							alert('저장된 쿠키'+getCookie("USER_ID"))
+							setCookie("USERID",d.uid),
+							alert('저장된 쿠키'+getCookie("USERID"))
 						).done(()=>{
 							brd.onCreate()
 							}).fail(()=>{

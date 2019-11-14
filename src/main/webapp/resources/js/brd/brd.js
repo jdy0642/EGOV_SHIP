@@ -2,7 +2,7 @@
 var brd = brd || {}
 brd = (()=>{
 	const WHEN_ERR = '호출하는 JS파일을 찾을 수 없습니다.';
-	let _,js,css,img,brd_vue_js,router_js,navi_js,navi_vue_js,page_vue_js,compo_vue_js;
+	let _,js,css,img,brd_vue_js,router_js,navi_js,navi_vue_js,page_vue_js,compo_vue_js,proxy_js;
 	let init =()=>{
 		  _=$.ctx()
 	      js=$.js()
@@ -10,6 +10,7 @@ brd = (()=>{
 	      img=$.img()
 		brd_vue_js = js+'/vue/brd_vue.js';
 		router_js = js+'/cmm/router.js';
+		proxy_js = js+ '/cmm/proxy.js'
 		navi_js = js+'/cmm/navi.js';
 		navi_vue_js = js+'/vue/navi_vue.js';
 		page_vue_js = js+'/vue/page_vue.js';
@@ -22,7 +23,8 @@ brd = (()=>{
 				$.getScript(navi_vue_js),
 				$.getScript(page_vue_js),
 				$.getScript(compo_vue_js),
-				$.getScript(navi_js)
+				$.getScript(navi_js),
+				$.getScript(proxy_js)
 		).done(()=>{
 			setContentView()
 			navi.onCreate()
@@ -120,7 +122,7 @@ brd = (()=>{
 	let write=()=>{
 		alert('라이트_'+_)
 		$('#recent_updates').html(brd_vue.brd_write())
-		$('#write_form input[name="writer"]').val(getCookie("USER_ID"))
+		$('#write_form input[name="writer"]').val(getCookie("USERID"))
 		$('#suggestions').remove()
 		$('<input>',{
 			style:"float:right;width:100px;margin-right:10px",
@@ -183,6 +185,46 @@ brd = (()=>{
 		$('#write_form input[name="title"]').val(x.title)
 		$('#write_form textarea[name="content"]').val(x.content)
 		$('#suggestions').remove()
+		
+		$('<input type="file" name="fileupload" id="fileupload" multiple></input>')
+		.appendTo('#write_form')
+		$('<input>',{
+			type:"button",
+			style: "float:right;width:150px;margin-right:10px",
+			value: "파일 업로드",
+			id:"upload"
+		})
+		.addClass('btn btn-warning')
+		.appendTo('#write_form')
+		.click(e=>{
+			e.preventdeaFault
+			alert('파일업로드')
+			let formData = new FormData()
+			let inputFile = $('#fileupload')
+			let files = inputFile[0].files;
+			let i = 0
+			for(;i<files.length;i++){
+				alert(files[i])
+				if($.fn.checkExtension({fname: files[i].name, fsize: files[i].size}))
+					return false
+				/*if(new CheckExtension({fname: files[i].name, fsize: files[i].size}))
+					return false*/
+				formData.append("uploadFile", inputFile[i])
+			}
+			$.ajax({
+				url:_+'/articles/fileupload',
+				processData : false,
+				contentType: false,
+				data: formData,
+				type:'POST',
+				success : d=>{alert('파일업로드 성공')},
+				error : e=>{alert('파일업로드 실패')}
+			})
+			alert(inputFile)
+			 /*$('#recent_updates div.container-fluid').remove()
+			recent_updates({page: '1', size:'5'})*/
+		})
+		
 		$('<input>',{
 			style:"float:right;width:100px;margin-right:10px",
 			value: '삭제',
@@ -201,6 +243,7 @@ brd = (()=>{
 			 $('#recent_updates div.container-fluid').remove()
 			recent_updates({page: '1', size:'5'})
 		})
+		
 		$('<input>',{
 			style:"float:right;width:100px;margin-right:10px", 
 			type:"submit",

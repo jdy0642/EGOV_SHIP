@@ -34,6 +34,8 @@
 		<HikariCP-version>3.4.0</HikariCP-version>
 		<jsoup-version>1.12.1</jsoup-version>
 		<mariadb-version>2.4.4</mariadb-version>
+		<thumbnailator-version>0.4.8</thumbnailator-version>
+		<jackson-dataformat-version>2.9.9</jackson-dataformat-version>
 		
 	</properties>
 	<dependencies>
@@ -190,6 +192,14 @@
    			 <version>${mybatis-spring-version}</version>
 		</dependency>
 		
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		    <version>${jackson-dataformat-version}</version>
+		</dependency>
+		
 		<dependency>
    			 <groupId>com.fasterxml.jackson.core</groupId>
    			 <artifactId>jackson-databind</artifactId>
@@ -211,6 +221,12 @@
           <artifactId>mariadb-java-client</artifactId>
           <version>${mariadb-version}</version>
         </dependency>
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+		<dependency>
+		    <groupId>net.coobird</groupId>
+		    <artifactId>thumbnailator</artifactId>
+		    <version>${thumbnailator-version}</version>
+		</dependency>
 		
 		<!-- Test -->
 		<dependency>

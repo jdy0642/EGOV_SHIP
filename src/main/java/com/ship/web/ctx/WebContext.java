@@ -11,12 +11,12 @@ public class WebContext extends AbstractAnnotationConfigDispatcherServletInitial
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {RootContext.class};
+		return new Class[] { RootContext.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {ServletContext.class};
+		return new Class[] { ServletContext.class };
 	}
 
 	@Override
