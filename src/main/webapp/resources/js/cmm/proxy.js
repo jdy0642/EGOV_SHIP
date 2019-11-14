@@ -1,11 +1,25 @@
 "use strict"
-$.prototype.nullchecker=x=>{
+function CheckExtension(x) {
 	let flag = false
-	let i = 0 
-	for(i in x){
-		if(x[i] === ''){
-			flag = true
-		}
-	}
-	return flag 
+	let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$")
+    let maxSize = 5242880; //5MB
+    if (x.fsize >= maxSize) {
+        alert('파일사이즈 초과')
+        flag = true
+    }
+    if (regex.test(x.fname)) {
+        alert('해당종류의 파일은 업로드할수 없습니다.')
+        flag = true
+    }
+    return flag
+}
+$.prototype.nullchecker = x => {
+    let flag = false
+    let i = 0
+    for (i in x) {
+        if (x[i] === '') {
+            flag = true
+        }
+    }
+    return flag
 }

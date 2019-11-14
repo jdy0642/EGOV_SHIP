@@ -7,7 +7,7 @@ public enum Path {
 		String result = "";
 		switch (this) {
 		case UPLOAD_PATH:
-			result = "C:\\Users\\User\\git\\EGOV_SHIP\\src\\main\\webapp\\resources\\upload\\temp";
+			result = "C:\\Users\\User\\git\\EGOV_SHIP\\src\\main\\webapp\\resources\\upload";
 			break;
 		
 		case CRAWLING_TARGET:

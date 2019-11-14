@@ -25,6 +25,7 @@ import com.ship.web.enums.Path;
 import com.ship.web.pxy.PageProxy;
 import com.ship.web.pxy.Trunk;
 import com.ship.web.pxy.Box;
+import com.ship.web.pxy.FileProxy;
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -37,6 +38,7 @@ public class ArticleCtrl {
 	@Autowired Box<Article> box;
 	@Autowired Trunk<Object> trunk;
 	@Autowired PageProxy pager;
+	@Autowired FileProxy filemgr;
 	
 	@PostMapping("/")
 	public Map<?,?> write(@RequestBody Article param) {
@@ -94,17 +96,6 @@ public class ArticleCtrl {
 	@PostMapping("/fileupload")
 	public void fileupload(MultipartFile[] uploadFile) {
 		printer.accept("파일 업로드");
-		String uploadFolder = Path.UPLOAD_PATH.toString();
-		for(MultipartFile f : uploadFile) {
-			String fname = f.getOriginalFilename();
-			fname = fname.substring(fname.lastIndexOf("\\")+1);
-			File saveFile = new File(uploadFolder, fname);
-			try {
-				f.transferTo(saveFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
+		filemgr.fileupload(uploadFile);
+	}	
 }

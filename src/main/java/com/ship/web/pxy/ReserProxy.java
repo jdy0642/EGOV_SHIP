@@ -1,5 +1,6 @@
 package com.ship.web.pxy;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,7 +23,6 @@ public class ReserProxy extends Proxy{
 	@Autowired Box<String> box;
 	@Autowired ReserMapper reserMapper;
 	private char[] charaters = {'0','1','2','3','4','5','6','7','8','9'};
-	//resnum, resdate, userponint, rescan, payamount, payway, paycan
 	private String makeResnum() {
 		StringBuffer buffer = new StringBuffer();
 		Random ran = new Random();
@@ -33,9 +33,7 @@ public class ReserProxy extends Proxy{
 		return buffer.toString();
 	}
 	private String makeResdate() {
-		SimpleDateFormat resdata = new SimpleDateFormat("yyyy-MM-dd");
-		String format_time = resdata.format(System.currentTimeMillis());
-		return format_time;
+		return currentDate();
 	}
 	private String makeUserponint() {
 		List<String> point = Arrays.asList("10000", "20000");
@@ -46,6 +44,15 @@ public class ReserProxy extends Proxy{
 		List<String> paycan = Arrays.asList("예약","예약취소");
 	   	Collections.shuffle(paycan);
 		return paycan.get(0);
+	}
+	private String makePaynum() {
+		StringBuffer buffer = new StringBuffer();
+		Random ran = new Random();
+
+		for (int i = 0; i < 4; i++) {
+			buffer.append(charaters[ran.nextInt(charaters.length)]);
+		}
+		return buffer.toString();
 	}
 	private String makePayamount() {
 		List<String> pay = Arrays.asList("10000", "20000");
@@ -62,15 +69,7 @@ public class ReserProxy extends Proxy{
 	   	Collections.shuffle(paycan);
 		return paycan.get(0);
 	}
-	private String makePaynum() {
-		StringBuffer buffer = new StringBuffer();
-		Random ran = new Random();
-
-		for (int i = 0; i < 4; i++) {
-			buffer.append(charaters[ran.nextInt(charaters.length)]);
-		}
-		return buffer.toString();
-	}
+	
 	private String makeAdmin() {
 		String admin = "Hong";
 		return admin;

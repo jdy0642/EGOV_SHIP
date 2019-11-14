@@ -244,7 +244,7 @@ adm =(()=>{
     		  alert('게시판 글 수: '+d.articleCount)
     	  })
       })
-      $('</br></br><a>res 더미 대량 입력</a>')
+      $('</br></br><a>RES 더미 대량 입력</a>')
       .appendTo('#right')
       .click(e=>{
     	  e.preventDefault()
