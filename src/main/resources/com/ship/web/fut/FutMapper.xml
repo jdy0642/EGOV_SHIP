@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ship.web.futsal.FutMapper">
-	<select id="createFuttab" parameterType="Map">
-    	${CREATEFUTTAB}
+	<select id="createFutTab" parameterType="hashmap">
+    	${CREATE_FUTTAB}
     </select>
-	<select id="createPosttab" parameterType="Map">
-    	${CREATEPOSTTAB}
+	<select id="createPostTab" parameterType="hashmap">
+    	${CREATE_POSTTAB}
     </select>
     
 </mapper>
