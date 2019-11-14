@@ -2,6 +2,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ship.web.adm.AdminMapper">
+	<insert id="insertAdmins" parameterType="Admin">
+       INSERT INTO ADMIN (ADMINID, ADMINPW, ADMINNAME, ADMINTEL, ADMINEMAIL, REGISTER, REGISTERNUM, STADIUMID, STADIUMNUM) VALUES (
+              #{adminid}, #{adminpw}, #{adminname}, #{admintel}, #{adminemail},#{register},#{registernum},#{stadiumid},#{stadiumnum})
+    </insert>
+    
+     <select id="countAdmin" resultType="string">
+    		SELECT COUNT(*) FROM ADMIN 
+    </select>
 	
     <insert id="registerByIdPw" parameterType="Admin">
        INSERT INTO ADMIN(EID,PWD)

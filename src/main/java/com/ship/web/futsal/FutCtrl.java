@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ship.web.enums.SQL;
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.Trunk;
@@ -17,27 +17,22 @@ import com.ship.web.pxy.Trunk;
 @RestController
 @RequestMapping("/fut")
 public class FutCtrl {
-	@Autowired Trunk<Object> map;
+	@Autowired Trunk<Object> trunk;
+	@Autowired Box<Object> box;
 	@Autowired FutMapper futMapper;
 	
 	@GetMapping("/create/Futtab")
 	public Map<?,?> createFutTab(){
-		HashMap<String, String> paramMap = new HashMap<>();
-		map.put(Arrays.asList("CREATEFUTTAB","msg")
-				,Arrays.asList(SQL.CREATEFUTTAB.toString(),"Sucess"));
+		trunk.put(Arrays.asList("CREATEFUTTAB","msg")
+				,Arrays.asList(SQL.CREATEFUTTAB.toString(),"SUCCESS"));
 		Consumer<Map<?, ?>> c = x-> futMapper.createFuttab(x);
-		c.accept(paramMap);
-		return map.get();
+		return trunk.get();
 	}
 	@GetMapping("/create/Posttab")
 	public Map<?,?> createPostTab(){
-		HashMap<String, String> paramMap = new HashMap<>();
-		//logger.info("Create table {}",SQL.CREATEFUTTAB.toString());
-		paramMap.put("CREATEPOSTTAB", SQL.CREATEPOSTTAB.toString());
+		trunk.put(Arrays.asList("CREATEFUTTAB","msg")
+				,Arrays.asList(SQL.CREATEPOSTTAB.toString(),"SUCCESS"));
 		Consumer<Map<?, ?>> c = x-> futMapper.createPosttab(x);
-		c.accept(paramMap);
-		paramMap.clear();
-		paramMap.put("msg","Sucess");
-		return paramMap;
+		return trunk.get();
 	}
 }

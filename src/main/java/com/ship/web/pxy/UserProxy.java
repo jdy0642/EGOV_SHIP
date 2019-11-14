@@ -3,25 +3,26 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ship.web.tx.TxMapper;
 import com.ship.web.usr.User;
 import com.ship.web.usr.UserMapper;
+
 @Component("manager")
 public class UserProxy extends Proxy{
-	   @Autowired UserMapper userMapper;
+	@Autowired UserMapper userMapper;
+	@Autowired TxMapper txMapper;
 	
 	private char[] charaters = {'a','b','c','d','e','f','g','h','i',
 			   'j','k','l','m','n','o','p','q','r','s','t','u','v','w',
 			   'x','y','z','0','1','2','3','4','5','6','7','8','9'};
+	
 	   private int mailLength = 6; 
 	   
 	   public String makeUname(){
-	//   uid,upw, uname,  loc, tel, point, age, gender,
-//	    email, score, mvp, win, hitmap, km, heart, author, lolName
 	       List<String> fName = Arrays.asList("김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안",
 	                 "송", "류", "전", "홍", "고", "문", "양", "손", "배", "조", "백", "허", "유", "남", "심", "노", "정", "하", "곽", "성", "차", "주",
 	                 "우", "구", "신", "임", "나", "전", "민", "유", "진", "지", "엄", "채", "원", "천", "방", "공", "강", "현", "함", "변", "염", "양",
@@ -43,10 +44,36 @@ public class UserProxy extends Proxy{
 	             return fullName;
 	           }
 	   
-	   private String makeLoc() {
-		   	List<String> loc = Arrays.asList("서울, 경기, 충청");
-		   	Collections.shuffle(loc);
-			return loc.get(0);
+	  
+	   public String makeAge () {
+			return String.format("%02d", random(1, 100)); 
+		}
+		
+		public String makeGender () {
+			return (random(10, 10))%2 == 0 ? "남" : "여"; 
+		}
+		
+		public String makeTel () {
+			return String.format("%03d",random(1, 100))+"-"+String.format("%04d",random(1, 1000));
+		}
+		
+		public String makeUpoint () {
+			return String.format("%04d",random(1, 1000));
+		}
+		
+		public String makeScore () {
+			return String.format("%03d",random(1, 100));
+		}
+		
+		public String makeMvp () {
+			return String.format("%02d",random(1, 100));
+		}
+		
+		public String makeWin () {
+			return String.format("%02d",random(1, 100));
+		}
+		public String makeKm () {
+			return String.format("%03d",random(3, 100));
 		}
 	   public int setCalendars(){
 	        int[] maxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -58,17 +85,7 @@ public class UserProxy extends Proxy{
 	        int iUserBirthDay = iRandomDay;
 	        return 0;
 	      }
-	// uid,upw, uname,  loc, tel, point, age, gender,
-	// email, score, mvp, win, hitmap, km, heart, author, lolName
-	   public User makeUser() {
-		      return new User(makeUid(),makeUname(),"1",makeLoc(),makeGender(), makeTel(), makeAge(),
-		    		  makeEmail(), makeScore(), makeMvp(), makeWin(), makeHitmap(), makeKm(), makeHeart(),
-		    		  makeHitmap(), makeAuthor(), makeLolName());
-		   }
-
-	private String makeScore() {
-		return null;
-	}
+	   
 	private String makeLolName() {
 		List<String> lName = Arrays.asList("가", "강", "건", "경", "고", "관", "광", "구", "규", "근", "기", "길", "나", "남", "노", "누", "다",
 		        "단", "달", "담", "대", "덕", "도", "동", "두", "라", "래", "로", "루", "리", "마", "만", "명", "무", "문", "미", "민", "바", "박",
@@ -82,71 +99,52 @@ public class UserProxy extends Proxy{
 		        "흔", "악", "람", "뜸", "권", "복", "심", "헌", "엽", "학", "개", "롱", "평", "늘", "늬", "랑", "얀", "향", "울", "련");
 
 		    Collections.shuffle(lName);
-//		    성.get(0) + 이름.get(0) + 이름.get(1);
 		    String lolName = "소환사" + lName.get(0) + lName.get(1) + "님";
 		return lolName;
 	}
-	private String makeAuthor() {
-		return null;
-	}
-	private String makeKm() {
-		return null;
-	}
-	private String makeHitmap() {
-		return null;
-	}
-	private String makeWin() {
-		return null;
-	}
-	private String makeMvp() {
-		return null;
-	}
-	private String makeEmail() {
-	    StringBuffer sb = new StringBuffer();
 
-	    Random ran = new Random();
-
-	    for( int i = 0 ; i < mailLength ; i++ ){
-
-	        sb.append( charaters[ ran.nextInt( charaters.length ) ] );
-	    }
-	    return sb.toString()+"gmail.com";
-	}
-	private String makeGender() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	private String makeAge() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	private String makePoint() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	private String makeTel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	private String makeHeart() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	private String makeUid() {
 		StringBuffer buffer = new StringBuffer();
 		Random ran = new Random();
-		String name[] = 
-				"a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z".split(",");
-		
-		for (int i = 0 ; i < 7; i++) {
+
+		String name[] = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z".split(",");
+
+		for (int i = 0; i < 7; i++) {
 			buffer.append(name[ran.nextInt(name.length)]);
 		}
 		return buffer.toString();
 	}
-	@Transactional 
-	   public void insertUsers() {
-		   for(int i=0; i<500;i++) {
-			   userMapper.insertUser(makeUser());
-		   }
-	   }
+
+	private String makeEmail() {
+		StringBuffer buffer = new StringBuffer();
+		Random ran = new Random();
+
+		for (int i = 0; i < 5; i++) {
+			buffer.append(charaters[ran.nextInt(charaters.length)]);
+		}
+		return buffer.toString()+"@aSibal.net";
+	}
+
+		public String makeAuthor () {
+			return (random(10, 10))%2 == 0 ? "1" : "0"; 
+		}
+		
+		 private String makeLoc() {
+			   	List<String> loc = Arrays.asList("서울","경기","충청");
+			   	Collections.shuffle(loc);
+				return loc.get(0);
+			}
+		 
+
+	public User makeUser() {
+		return new User(makeUid(), makeUname(), "1", makeTel(),makeUpoint(), makeAge(), makeLoc(),makeGender(),  makeEmail(),
+				null, null, null);
+	}
+
+	@Transactional
+	public void insertUsers() {
+		for (int i = 0; i < 500; i++) {
+			userMapper.insertUser(makeUser());
+		}
+	}
 }

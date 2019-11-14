@@ -9,7 +9,7 @@ import com.ship.web.pxy.PageProxy;
 @Repository
 public interface ArticleMapper {
 	public String countArticle();
-	public void insertArticle(Article param);
+	public void insertArticle(Article article);
 	public List<Article> selectList(PageProxy pxy);
 	public void updateArticle(Article param);
 	public void deleteArticle(Article param);

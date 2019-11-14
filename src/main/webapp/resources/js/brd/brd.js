@@ -120,7 +120,7 @@ brd = (()=>{
 	let write=()=>{
 		alert('라이트_'+_)
 		$('#recent_updates').html(brd_vue.brd_write())
-		$('#write_form input[name="writer"]').val(getCookie("USER_ID"))
+		$('#write_form input[name="writer"]').val(getCookie("USERID"))
 		$('#suggestions').remove()
 		$('<input>',{
 			style:"float:right;width:100px;margin-right:10px",
@@ -130,6 +130,44 @@ brd = (()=>{
 		.appendTo('#write_form')
 		.click(()=>{
 		})
+		
+		$('<input>',{
+			style:"float:right;width:120px;margin-right:10px",
+			value: '파일업로드',
+		})
+		.addClass('btn btn-warning')
+		.appendTo('#write_form')
+		.click(e=>{
+			e.preventDefault()
+			alert('파일업로드')
+			let formData = new FormData()
+			let inputFile = $('#upload')[0].files
+			let i = 0
+			for(;i<inputFile.length;i++){
+//				if(new CheckExtension({fname : inputFile[i].name, 
+//					fsize : inputFile[i].size})){
+//					return false
+//				}else{
+					formData.append("uploadFile", inputFile[i])
+					$.ajax({
+						url: _+'/articles/fileupload',
+						processData: false,
+						contentType: false,
+						data: formData,
+						type: 'POST',
+						success: d=>{
+							alert('파일 업로드 성공')
+						},
+						error: e =>{
+							alert('파일 업로드 실패')
+						}
+					})
+//				}
+			}
+			
+			alert(inputFile)
+		})
+		
 		$('<input>',{
 			style:"float:right;width:100px;margin-right:10px", 
 			value:"제출",
@@ -159,9 +197,14 @@ brd = (()=>{
 				error:e=>{
 					 alert('게시물 등록 실패')
 				}
-			}
-			)
+			})
 		})
+		$('<input>',{
+			type: "file",
+			id: "upload"
+		})
+		.appendTo('#write_form')
+		
 	}
 	let count=()=>{
 		$.ajax({

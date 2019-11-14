@@ -13,4 +13,6 @@ public interface AdminMapper {
 	public void createGame(HashMap<String, String> param);
 	public void createAdminTable(HashMap<String, String> map);
 	public void createRevenueTable(HashMap<String, String> map);
+	public void insertAdmins(Admin admin);
+	public String countAdmin();
 }
