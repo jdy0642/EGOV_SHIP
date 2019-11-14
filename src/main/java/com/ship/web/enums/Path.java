@@ -7,7 +7,7 @@ public enum Path {
 		String result = "";
 		switch (this) {
 		case UPLOAD_PATH:
-			result = "C:\\Users\\User\\govern\\eGovFrame-3.8\\workspace\\ship\\src\\main\\webapp\\resources\\upload\\temp";
+			result = "C:\\Users\\User\\govern\\eGovFrame-3.8\\workspace\\ship\\src\\main\\webapp\\resources\\upload\\";
 			break;
 		
 		case CRAWLING_TARGET:
