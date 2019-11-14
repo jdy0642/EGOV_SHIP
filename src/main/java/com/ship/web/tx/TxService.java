@@ -9,7 +9,9 @@ import com.ship.web.brd.ArticleMapper;
 import com.ship.web.pxy.ArticleProxy;
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.CrawlingProxy;
+import com.ship.web.pxy.ReserProxy;
 import com.ship.web.pxy.UserProxy;
+import com.ship.web.res.ReserMapper;
 import com.ship.web.usr.UserMapper;
 @Service
 public class TxService {
@@ -20,6 +22,8 @@ public class TxService {
 	@Autowired UserProxy manager;
 	@Autowired ArticleProxy art;
 	@Autowired Box<String> box;
+	@Autowired ReserProxy resers;
+	@Autowired ReserMapper reserMapper;
 	
 	
 	public Box<String> crawling(Map<?,?> paramMap){
@@ -36,5 +40,9 @@ public class TxService {
 	}
 	public void truncateUsers() {
 		
+	}
+	public String registerResers() {
+		resers.insertReser();
+		return reserMapper.countReser();
 	}
 }

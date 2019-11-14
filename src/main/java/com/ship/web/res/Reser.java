@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Reser {
-	private String resnum, data, userponint, rescan, payamount, payway, paycan;
+	private String resnum, resdate, userponint, rescan, payamount, payway, paycan, paynum, adminid;
 }

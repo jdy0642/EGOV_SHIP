@@ -136,12 +136,13 @@ brd = (()=>{
 		})
 		.addClass('btn btn-warning')
 		.appendTo('#write_form')
-		.click(()=>{
+		.click(e=>{
+			e.preventDefault()
 			let formData = new FormData();
-			let inputFile = $('#upload')[0].files;
+			let files = $('#upload')[0].files;
 			let i = 0;
-			for(;i<inputFile.length; i++){
-				formData.append("uploadFile", inputFile[i])
+			for(;i<files.length; i++){
+				formData.append("uploadFile", files[i])
 			}
 			$.ajax({
 				url : _+'/articles/fileupload',

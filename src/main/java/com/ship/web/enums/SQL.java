@@ -80,9 +80,6 @@ public enum SQL {
                     "PAYWAY VARCHAR(30),\r\n" +
                     "PAYCAN VARCHAR(30),\r\n" +
                     "ADMINID VARCHAR(30)\r\n" +
-                    "USERID VARCHAR(10), FOREIGN KEY (USERID) REFERENCES ADMIN (USERID)" +
-					"INCOMEDAY VARCHAR(30), FOREIGN KEY (INCOMDAY) REFERENCES ADMIN (INCOMDAY)" +
-					"GAMEID VARCHAR(30), FOREIGN KEY (GAMEID) REFERENCES ADMIN (GAMEID)" +
                     ")";
 			break;
 			

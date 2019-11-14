@@ -244,6 +244,14 @@ adm =(()=>{
     		  alert('게시판 글 수: '+d.articleCount)
     	  })
       })
+      $('</br></br><a>res 더미 대량 입력</a>')
+      .appendTo('#right')
+      .click(e=>{
+    	  e.preventDefault()
+    	  $.getJSON(_+'/tx/register/resers',d=>{
+    		  alert('얌얌: '+d.reserCount)
+    	  })
+      })
       
    }
    return{onCreate}

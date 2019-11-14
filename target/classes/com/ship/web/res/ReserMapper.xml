@@ -6,4 +6,13 @@
 	<select id="createRes" parameterType="hashmap">
 		${CREATE_RES}
 	</select>
+	<insert id="insertReser" parameterType="Reser">
+		INSERT INTO RESERVATION (RESNUM, RESDATE, USERPOINT,
+		RESCAN,PAYNUM,PAYAMOUNT,PAYWAY,PAYCAN,ADMINID) VALUES (
+		#{resnum}, #{resdate}, #{userponint}, #{rescan},
+		#{paynum},#{payamount},#{payway},#{paycan},#{adminid})
+	</insert>
+	<select id="countReser" resultType="string">
+		SELECT COUNT(*) FROM RESERVATION
+	</select>
 </mapper>

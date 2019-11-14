@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReserMapper {
 	public void createRes(HashMap<String, String> parmaMap);
+	public void insertReser(Reser param);
+	public String countReser();
 }

@@ -15,6 +15,7 @@ import com.ship.web.pxy.Trunk;
 import com.ship.web.pxy.UserProxy;
 import com.ship.web.pxy.Box;
 import com.ship.web.pxy.CrawlingProxy;
+import com.ship.web.pxy.ReserProxy;
 import com.ship.web.utl.Printer;
 
 @RestController
@@ -28,6 +29,7 @@ public class TxController {
 	@Autowired UserProxy manager;
 	@Autowired CrawlingProxy crawler;
 	@Autowired Box<String> box;
+	@Autowired ReserProxy resers;
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch){
@@ -50,5 +52,10 @@ public class TxController {
 		trunk.put(Arrays.asList("articleCount"), Arrays.asList(crawler.string(articleCount)));
 		return trunk.get();
 	}
-	
+	@GetMapping("register/resers")	
+	public Map<?,?> instertRes(){
+		String res = txService.registerResers();
+		trunk.put(Arrays.asList("reserCount"), Arrays.asList(crawler.string(res)));
+		return trunk.get();
+	}
 }
