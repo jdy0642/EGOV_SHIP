@@ -2,8 +2,14 @@
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ship.web.lol.LolMapper">
-	<select id="createLolTable" parameterType="hashmap">
-		${CREATE_LOL}
+	
+	<select id="insertLol" parameterType="Lol">
+		INSERT INTO LOL (LOLNAME, USERID, ROOMNUM, ROOMMAKE, INVITE, LOLSTART, LOLBLACK, REPORTNUM)
+				VALUES (#{lolname},#{uid},#{roomnum},#{roommake},#{invite},#{lolstart},#{lolblack},#{reportnum})
+	</select>
+	<select id="countLol" resultType="string">
+		SELECT COUNT(*)
+			FROM LOL
 	</select>
 	
 </mapper>

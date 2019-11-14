@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ship.web.brd.Article;
+import com.ship.web.lol.Lol;
 import com.ship.web.usr.User;
 
 import com.ship.web.usr.User;
@@ -27,5 +28,9 @@ public interface TxMapper {
 	@Insert("INSERT INTO ARTICLE (TITLE, CONTENT, USERID, COMMENTS, PAGENO, FILE) VALUES (\n" + 
 			"              #{title}, #{content}, #{userid}, #{comments}, #{pageno}, #{file})")
 	public void insertArticle(Article a);
+	
+	@Insert("INSERT INTO LOL (LOLNAME, USERID, ROOMNUM, ROOMMAKE, INVITE, LOLSTART, LOLBLACK, REPORTNUM)"
+			+ "VALUES( #{lolname}, #{uid}, #{roomnum},#{roommake},#{invite},#{lolstart},#{lolblack},#{reportnum})")
+	public void insertLol(Lol l);
 		
 }

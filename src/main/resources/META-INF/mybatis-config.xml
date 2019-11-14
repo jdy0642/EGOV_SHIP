@@ -10,5 +10,6 @@
        <typeAlias alias="Admin"  type="com.ship.web.adm.Admin"/>
        <typeAlias alias="Proxy"  type="com.ship.web.pxy.Proxy"/>
        <typeAlias alias="Reser"  type="com.ship.web.res.Reser"/>
+       <typeAlias alias="Lol"  type="com.ship.web.lol.Lol"/>
     </typeAliases>
 </configuration>

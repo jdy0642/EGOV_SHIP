@@ -49,5 +49,12 @@ public class TxController {
 		trunk.put(Arrays.asList("articleCount"), Arrays.asList(crawler.string(articleCount)));
 		return trunk.get();
 	}
+	@GetMapping("/register/lols")
+	public Map<?,?> registerLol(){
+		int lolCount =  txService.registerLol();
+		p.accept("롤 카운팅: "+lolCount);
+		trunk.put(Arrays.asList("lolCount"), Arrays.asList(crawler.string(lolCount)));
+		return trunk.get();
+	}
 	
 }

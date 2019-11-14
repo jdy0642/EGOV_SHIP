@@ -32,7 +32,7 @@ public class CrawlingProxy extends Proxy {
 	      return box;
 	   }
 	private Box<String> crawling(String url) {
-		p.accept("\n url: "+url);
+		
 		box.clear();
 	      try {
 	    	  Document rawData = Jsoup.connect(url).timeout(10*1000).get();

@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Lol {
-	private String lolname,userid,roomnum,roommake,invite,lolstart,lolback,reportnum;
+	private String lolname,uid,roomnum,roommake,invite,lolstart,lolblack,reportnum;
 }

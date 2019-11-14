@@ -49,7 +49,7 @@ adm =(()=>{
             {txt:'구장등록',name:'stad_reg'},
             {txt:'웹크롤링',name:'web_crawl'},
             {txt:'구장관리',name:'stad_mgmt'},
-            {txt:'수익구조',name:'data_graph'},
+            {txt:'롤',name:'lol_mgmt'},
             {txt:'게시판관리',name:'brd_mgmt'}],
          (i,j)=>{
          $('<div name="'+j.name+'">'+j.txt+'</div>')
@@ -70,8 +70,9 @@ adm =(()=>{
             case 'stad_mgmt':
                $('#right').empty()
                break;
-            case 'data_graph':
+            case 'lol_mgmt':
                $('#right').empty()
+               lol_mgmt()
                break;
             case 'web_crawl':
                $('#right').empty()
@@ -172,15 +173,7 @@ adm =(()=>{
          })
       })
       
-      $('</br></br><a>LOL 테이블 생성</a>')
-      .appendTo('#right')
-      .click(e=>{
-         e.preventDefault()
-         $.getJSON(_+'/lols/create/lol',d=>{
-            alert('lol테이블 생성'+d.msg)
-         })
-      })
-      
+     
       $('</br></br><a>REPORT 테이블 생성</a>')
       .appendTo('#right')
       .click(e=>{
@@ -243,6 +236,25 @@ adm =(()=>{
     		  alert('일괄 등록된 유저의 수: '+d.msg)
     	  })
       })
+   }
+   let lol_mgmt=()=>{
+	   $('</br></br><a>LOL 테이블 생성</a>')
+	      .appendTo('#right')
+	      .click(e=>{
+	         e.preventDefault()
+	         $.getJSON(_+'/lols/create/lol',d=>{
+	            alert('lol테이블 생성'+d.msg)
+	         })
+	      })
+	      $('</br></br><a>LOL 더미 입력</a>')
+	      .appendTo('#right')
+	      .click(e=>{
+	         e.preventDefault()
+	         $.getJSON(_+'/tx/register/lols',d=>{
+	            alert('lol테이블 생성'+d.lolCount)
+	         })
+	      })
+	      
    }
    return{onCreate}
 })()

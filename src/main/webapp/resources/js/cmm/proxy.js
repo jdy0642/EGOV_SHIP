@@ -9,3 +9,20 @@ $.prototype.nullchecker=x=>{
 	}
 	return flag 
 }
+function CheckExtension(x){
+	alert('CheckExtension')
+	let flag = false
+	let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$")
+	let maxSize = 5242880 // 5MB
+	if(x.fsize >= maxSize){
+		alert('파일사이즈 초과')
+		flag = true
+	}
+	if(regex.test(x.fname)){
+		alert('해당 종류의 파일은 업로드 할수 없습니다')
+		flag = true
+	}
+	return flag
+	
+}
+

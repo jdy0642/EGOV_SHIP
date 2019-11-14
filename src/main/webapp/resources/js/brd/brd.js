@@ -2,7 +2,7 @@
 var brd = brd || {}
 brd = (()=>{
 	const WHEN_ERR = '호출하는 JS파일을 찾을 수 없습니다.';
-	let _,js,css,img,brd_vue_js,router_js,navi_js,navi_vue_js,page_vue_js,compo_vue_js;
+	let _,js,css,img,brd_vue_js,router_js,navi_js,navi_vue_js,page_vue_js,compo_vue_js,proxy_js
 	let init =()=>{
 		  _=$.ctx()
 	      js=$.js()
@@ -14,6 +14,8 @@ brd = (()=>{
 		navi_vue_js = js+'/vue/navi_vue.js';
 		page_vue_js = js+'/vue/page_vue.js';
 		compo_vue_js = js+'/vue/compo_vue.js';
+		proxy_js = js+'/cmm/proxy.js'
+		
 	}
 	let onCreate=()=>{
 		init()	
@@ -22,7 +24,8 @@ brd = (()=>{
 				$.getScript(navi_vue_js),
 				$.getScript(page_vue_js),
 				$.getScript(compo_vue_js),
-				$.getScript(navi_js)
+				$.getScript(navi_js),
+				$.getScript(proxy_js)
 		).done(()=>{
 			setContentView()
 			navi.onCreate()
@@ -136,14 +139,18 @@ brd = (()=>{
 		})
 		.addClass('btn btn-warning')
 		.appendTo('#write_form')
-		.click(()=>{
+		.click(e=>{
+			e.preventDefault()
 			alert('파일업로드클릭')
 			let formData = new FormData()
-			let inputFile = $('#upload')[0].files
+			let files = $('#upload')[0].files
 			
 			let i = 0
-			for(;i<inputFile.length; i++){
-				formData.append("uploadFile",inputFile[i])
+			for(;i<files.length; i++){
+				/*if(new CheckExtension({fname : files[i].name, fsize : files[i].size})){
+					return false
+				}*/
+				formData.append("uploadFile",files[i])
 			}
 			$.ajax({
 				url : _+'/articles/fileupload',
@@ -153,8 +160,7 @@ brd = (()=>{
 				type : 'POST',
 				success : d =>{
 					alert('파일업로드성공')
-					$('#recent_updates div.container-fluid').remove()
-					    recent_updates({page: '1', size:'5'})
+					
 				},
 				error : e =>{
 					alert('파일업로드실패')
